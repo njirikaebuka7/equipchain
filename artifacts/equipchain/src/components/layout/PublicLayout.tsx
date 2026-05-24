@@ -1,67 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "wouter";
 import { Menu, X, ChevronDown } from "lucide-react";
 import logoImg from "@assets/Gemini_Generated_Image_mnnghgmnnghgmnng_1779629281298.png";
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setIsScrolled(false);
+    setIsMobileMenuOpen(false);
   }, [location]);
-
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 60);
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const navLinkClass = (active: boolean) =>
     `text-sm font-medium transition-colors duration-200 ${
-      isScrolled
-        ? active
-          ? "text-primary"
-          : "text-muted-foreground hover:text-primary"
-        : active
-        ? "text-[#f97316]"
-        : "text-white/90 hover:text-white"
+      active ? "text-primary" : "text-muted-foreground hover:text-primary"
     }`;
 
   const dropdownTriggerClass = (active: boolean) =>
     `flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
-      isScrolled
-        ? active
-          ? "text-primary"
-          : "text-muted-foreground hover:text-primary"
-        : active
-        ? "text-[#f97316]"
-        : "text-white/90 hover:text-white"
+      active ? "text-primary" : "text-muted-foreground hover:text-primary"
     }`;
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
-      {/* Fixed navigation */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
-          isScrolled
-            ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm"
-            : "bg-transparent"
-        }`}
-      >
+      {/* Sticky white navigation */}
+      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo — white when nav is transparent, color when scrolled */}
             <Link href="/" className="flex items-center" data-testid="logo-link">
               <img
                 src={logoImg}
                 alt="EquipChain Global Ltd"
-                className={`h-11 w-auto transition-all duration-300 ${isScrolled ? "" : "brightness-0 invert"}`}
+                className="h-11 w-auto"
               />
             </Link>
 
@@ -100,9 +73,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className={`lg:hidden inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors ${
-                isScrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"
-              }`}
+              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-secondary focus:outline-none transition-colors"
               data-testid="btn-mobile-menu"
             >
               <span className="sr-only">Open main menu</span>
@@ -112,7 +83,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
         </div>
 
         {isMobileMenuOpen && (
-          <div className="lg:hidden absolute top-20 left-0 w-full bg-background border-b border-border shadow-lg animate-in slide-in-from-top-2 duration-200 z-50">
+          <div className="lg:hidden border-t border-border bg-background shadow-lg">
             <div className="px-4 pt-2 pb-6 space-y-1">
               <Link onClick={closeMenu} href="/" className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-secondary">Home</Link>
               <Link onClick={closeMenu} href="/about" className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-secondary">About Us</Link>
@@ -137,7 +108,6 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
         )}
       </header>
 
-      {/* Main content — starts at y=0, hero sections provide their own top padding */}
       <main className="flex-1">
         {children}
       </main>

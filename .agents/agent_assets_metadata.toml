@@ -36,3 +36,9 @@ id = "E7J2Usf-wiJV3CwwGxqUh"
 uri = "file://artifacts/equipchain/public/hse-commitment.png"
 type = "image"
 title = "generated_image"
+
+[[generated]]
+id = "DCgFe3yrsfqqREbdKMtPW"
+uri = "file://attached_assets/generated_images/nigerian_industrial_procurement_team_1145.png"
+type = "image"
+title = "generated_image"

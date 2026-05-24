@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import { useListBlogPosts } from "@workspace/api-client-react";
 import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
+import aboutImg from "@assets/generated_images/nigerian_industrial_procurement_team_1145.png";
 
 export function Home() {
   useEffect(() => {
@@ -24,12 +25,12 @@ export function Home() {
   ];
 
   const industries = [
-    { title: "Oil & Gas", icon: Zap },
-    { title: "Energy", icon: Zap },
-    { title: "Manufacturing", icon: Factory },
-    { title: "Infrastructure", icon: Building2 },
-    { title: "Mining", icon: Wrench },
-    { title: "Water & Process", icon: Droplets },
+    { title: "Oil & Gas", icon: Zap, desc: "Supporting upstream and downstream operations with specialized procurement, equipment sourcing, and site coordination." },
+    { title: "Energy", icon: Zap, desc: "Delivering critical materials and logistics for power generation, transmission, and energy distribution projects." },
+    { title: "Manufacturing", icon: Factory, desc: "Supplying consumables, spare parts, and end-to-end chain solutions to keep production lines running at peak." },
+    { title: "Infrastructure", icon: Building2, desc: "Providing construction materials, project coordination, and supply support for roads, utilities, and civil works." },
+    { title: "Mining", icon: Wrench, desc: "Sourcing heavy-duty equipment and operational supplies for extraction, processing, and mine support operations." },
+    { title: "Water & Process", icon: Droplets, desc: "Delivering instrumentation, process equipment, and technical supplies for water treatment and processing facilities." },
   ];
 
   return (
@@ -51,7 +52,7 @@ export function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl lg:text-8xl font-display font-bold text-white mb-6 leading-[1.05] max-w-5xl"
+            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.1] max-w-4xl"
           >
             Your Trusted Partner in Industrial{" "}
             <span className="text-[#f97316]">Procurement</span> & Supply Chain Solutions.
@@ -118,11 +119,11 @@ export function Home() {
               </Link>
             </div>
 
-            {/* Right column: industrial facility image */}
+            {/* Right column: about image */}
             <div className="relative rounded-3xl overflow-hidden shadow-2xl aspect-[4/3]">
               <img
-                src={heroImg}
-                alt="EquipChain Industrial Facility"
+                src={aboutImg}
+                alt="EquipChain Procurement Team"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d82]/80 via-[#0b0d82]/20 to-transparent" />
@@ -222,8 +223,8 @@ export function Home() {
                   <div className="w-12 h-12 rounded-xl bg-[#f97316]/20 flex items-center justify-center mb-5 group-hover:bg-[#f97316] transition-colors duration-300">
                     <ind.icon className="w-6 h-6 text-[#f97316] group-hover:text-white transition-colors duration-300" />
                   </div>
-                  <h4 className="text-xl font-semibold text-white mb-2">{ind.title}</h4>
-                  <div className="w-8 h-0.5 bg-[#f97316] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <h4 className="text-xl font-semibold text-white mb-3">{ind.title}</h4>
+                  <p className="text-white/55 text-sm leading-relaxed">{ind.desc}</p>
                 </div>
                 <div className="relative z-10 mt-4">
                   <span className="text-white/50 text-sm inline-flex items-center gap-1 group-hover:text-[#f97316] transition-colors">
