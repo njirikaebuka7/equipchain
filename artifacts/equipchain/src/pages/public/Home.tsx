@@ -69,29 +69,6 @@ export function Home() {
           </motion.div>
         </div>
 
-        {/* Stats Bar */}
-        <div className="absolute bottom-0 left-0 w-full border-t border-white/10 bg-[#1a1a2e]/80 backdrop-blur-md z-20">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-white/10 py-6">
-              <div className="text-center px-4">
-                <p className="text-3xl font-display font-bold text-white mb-1">20+</p>
-                <p className="text-xs text-white/60 uppercase tracking-wider">Years Experience</p>
-              </div>
-              <div className="text-center px-4">
-                <p className="text-3xl font-display font-bold text-white mb-1">500+</p>
-                <p className="text-xs text-white/60 uppercase tracking-wider">Projects Delivered</p>
-              </div>
-              <div className="text-center px-4">
-                <p className="text-3xl font-display font-bold text-white mb-1">50+</p>
-                <p className="text-xs text-white/60 uppercase tracking-wider">Industry Partners</p>
-              </div>
-              <div className="text-center px-4">
-                <p className="text-3xl font-display font-bold text-white mb-1">100%</p>
-                <p className="text-xs text-white/60 uppercase tracking-wider">HSE Compliant</p>
-              </div>
-            </div>
-          </div>
-        </div>
       </section>
 
       {/* ABOUT PREVIEW */}
