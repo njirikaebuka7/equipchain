@@ -1,0 +1,24 @@
+Remove this from the hero (Trusted Nigerian Industrial Partner) and make sure the navigation + hero is 100vh.
+Use the attached image as the background image with nice overlay to make the hero text visible.
+Please all buttons should be completely rounded.
+Use the attached logo as the logo. Make sure it fits nicely and not make the navigation bigger, for dark areas, make the logo completely white.
+Please ensure you generate related images for the hero of the other pages.
+The footer background blue should be darker.
+
+On the “About Us” overview on the homepage, generate and use a quality image instead of cards on the right column.
+
+On the “Our Services” overview section of the homepage, first recreate a more creative cards for this section, I gave you a sample webpage where they use very creative cards, go back and check it. Then I observed that they are five cards leaving one space, use the “View All Services” to create a sixth clickable card nicely to view all services.
+Please recreate this section (Industries We Serve) to have nice glassmorphic cards. Three cards per row on desktop please and that background should be darker for the glassmorphic effect to look nice.
+
+Please include image in the about us page “who we are” section and make it look nice.
+On the services page, generate and include relevant images on each of the services tabs.
+Please note that if a user clicks the request a quote button from and of the services, it should bypass the services on the multi-step form and select the service clicked by the user.
+Please create a better cards for the “industries” page. I don’t like the ones there. It’s looking too dark and gradient. Make better one.
+On the “Our HSE Commitment” section of the HSE page, generate a HSE related image for the section to make it look professional. The cards heading are still looking too strong. No card heading or icon should look too strong.
+On the single blog posts, the “Industry Insights” button is clashing with the “Back to Insights” link.
+The email is yolatoye@equipchainglobal.com not info@equipchainglobal.com
+On the contact page, the google map should be pointing to the company address, and should be on a section of it’s own.
+Don’t forget to add images to the hero background of all pages. Ensure not to skip any task
+I am getting this error trying to open the admin dashboard: 404 Page Not Found
+Did you forget to add the page to the router?
+
