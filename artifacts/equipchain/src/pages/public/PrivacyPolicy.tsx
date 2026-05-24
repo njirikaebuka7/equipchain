@@ -39,7 +39,7 @@ export function PrivacyPolicy() {
 
       <h2>5. Contact Us</h2>
       <p>
-        If you have any questions about this privacy policy or our privacy practices, please contact us at info@equipchainglobal.com.
+        If you have any questions about this privacy policy or our privacy practices, please contact us at yolatoye@equipchainglobal.com.
       </p>
     </div>
   );

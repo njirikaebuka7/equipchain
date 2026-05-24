@@ -262,7 +262,7 @@ export function Contact() {
       {/* Full-Width Google Map */}
       <section className="h-[450px] w-full">
         <iframe
-          src="https://maps.google.com/maps?q=Agege+Lagos+Nigeria&output=embed&z=15"
+          src="https://maps.google.com/maps?q=Aziom+Plaza+Opp+Old+Nitel+Exchange+Tabon-Tabon+Agege+Lagos+Nigeria&output=embed&z=16"
           width="100%"
           height="100%"
           style={{ border: 0, display: "block" }}

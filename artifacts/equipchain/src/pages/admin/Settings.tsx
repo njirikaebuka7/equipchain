@@ -97,7 +97,7 @@ export function SettingsPage() {
                 <FormField control={form.control} name="email" render={({ field }) => (
                   <FormItem>
                     <FormLabel className="flex items-center gap-2"><Mail className="w-4 h-4 text-muted-foreground" /> Public Email</FormLabel>
-                    <FormControl><Input placeholder="info@equipchainglobal.com" {...field} /></FormControl>
+                    <FormControl><Input placeholder="yolatoye@equipchainglobal.com" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
