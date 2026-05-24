@@ -89,6 +89,32 @@ router.get("/blog/posts/admin", requireAuth, async (req, res) => {
   }
 });
 
+// Admin: get single post by ID (for editing)
+router.get("/blog/posts/admin/:id", requireAuth, async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    if (isNaN(id)) {
+      res.status(400).json({ error: "Invalid post ID" });
+      return;
+    }
+
+    const [post] = await db
+      .select()
+      .from(blogPostsTable)
+      .where(eq(blogPostsTable.id, id))
+      .limit(1);
+
+    if (!post) {
+      res.status(404).json({ error: "Post not found" });
+      return;
+    }
+
+    res.json(serializePost(post));
+  } catch (err) {
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // Public: get post by slug
 router.get("/blog/posts/:slug", async (req, res) => {
   try {

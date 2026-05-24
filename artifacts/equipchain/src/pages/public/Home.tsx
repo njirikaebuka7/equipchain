@@ -266,6 +266,91 @@ export function Home() {
           </div>
         </div>
       </section>
+
+      {/* INSIGHTS PREVIEW */}
+      <section className="py-24 bg-secondary/40">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-8 h-1 bg-[#f97316]"></div>
+                <h2 className="text-[#0b0d82] font-semibold tracking-wider uppercase text-sm">Insights & News</h2>
+                <div className="w-8 h-1 bg-[#f97316]"></div>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-display font-bold text-foreground">Latest from EquipChain</h3>
+            </div>
+            <Link href="/insights" className="inline-flex items-center font-semibold text-[#0b0d82] hover:text-[#f97316] transition-colors whitespace-nowrap">
+              View All Insights <ArrowRight className="ml-2 w-4 h-4" />
+            </Link>
+          </div>
+
+          {blogData?.posts && blogData.posts.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogData.posts.slice(0, 3).map((post, i) => (
+                <motion.div
+                  key={post.id}
+                  initial={{ opacity: 0, y: 24 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.1 }}
+                  className="group bg-card border border-border rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300"
+                >
+                  {post.featuredImage ? (
+                    <div className="aspect-[16/9] overflow-hidden">
+                      <img
+                        src={post.featuredImage}
+                        alt={post.title}
+                        loading="lazy"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      />
+                    </div>
+                  ) : (
+                    <div className="aspect-[16/9] bg-gradient-to-br from-[#0b0d82] to-[#1a1a2e]" />
+                  )}
+                  <div className="p-6">
+                    {post.category && (
+                      <span className="inline-block bg-[#f97316] text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full mb-4">
+                        {post.category}
+                      </span>
+                    )}
+                    <h4 className="text-lg font-display font-bold text-foreground mb-3 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
+                      {post.title}
+                    </h4>
+                    {post.excerpt && (
+                      <p className="text-muted-foreground text-sm mb-4 line-clamp-2">{post.excerpt}</p>
+                    )}
+                    <div className="flex items-center justify-between text-xs text-muted-foreground">
+                      <span>{post.author || "EquipChain Team"}</span>
+                      {post.publishedAt && (
+                        <span>{new Date(post.publishedAt).toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })}</span>
+                      )}
+                    </div>
+                    <Link
+                      href={`/insights/${post.slug}`}
+                      className="mt-4 inline-flex items-center text-sm font-semibold text-[#0b0d82] hover:text-[#f97316] transition-colors"
+                    >
+                      Read More <ArrowRight className="ml-1 w-4 h-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {[1, 2, 3].map((i) => (
+                <div key={i} className="bg-card border border-border rounded-2xl overflow-hidden">
+                  <div className="aspect-[16/9] bg-secondary animate-pulse" />
+                  <div className="p-6 space-y-3">
+                    <div className="h-4 bg-secondary rounded animate-pulse w-1/3" />
+                    <div className="h-5 bg-secondary rounded animate-pulse" />
+                    <div className="h-5 bg-secondary rounded animate-pulse w-4/5" />
+                    <div className="h-4 bg-secondary rounded animate-pulse w-2/3" />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </section>
     </div>
   );
 }

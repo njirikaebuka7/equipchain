@@ -37,11 +37,15 @@ app.use(
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-const sessionSecret = process.env.SESSION_SECRET || "equipchain-secret-2024-change-in-production";
+const sessionSecret = process.env.SESSION_SECRET;
+if (!sessionSecret && process.env.NODE_ENV === "production") {
+  throw new Error("SESSION_SECRET environment variable is required in production");
+}
+const resolvedSessionSecret = sessionSecret || "equipchain-dev-secret-not-for-production";
 
 app.use(
   session({
-    secret: sessionSecret,
+    secret: resolvedSessionSecret,
     resave: false,
     saveUninitialized: false,
     cookie: {
