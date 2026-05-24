@@ -52,7 +52,7 @@ export function Home() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-3xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.1] max-w-4xl"
+            className="text-4xl md:text-5xl lg:text-6xl font-display font-bold text-white mb-6 leading-[1.1] max-w-4xl"
           >
             Your Trusted Partner in Industrial{" "}
             <span className="text-[#f97316]">Procurement</span> & Supply Chain Solutions.

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { Shield, Truck, Settings, HardHat, Wrench, ChevronRight, CheckCircle2 } from "lucide-react";
+import { Shield, Truck, Settings, HardHat, Wrench, ChevronRight, CheckCircle2, ChevronDown } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
 
@@ -11,6 +11,7 @@ export function Services() {
   }, []);
 
   const [activeTab, setActiveTab] = useState(0);
+  const [openAccordion, setOpenAccordion] = useState<number | null>(0);
 
   const base = import.meta.env.BASE_URL;
 
@@ -94,6 +95,10 @@ export function Services() {
     }
   ];
 
+  const activeService = services[activeTab];
+  const quoteLink = (title: string) =>
+    `/request-quote?service=${SERVICE_SLUGS[title] || encodeURIComponent(title)}`;
+
   return (
     <div className="w-full">
       {/* Hero Section */}
@@ -108,53 +113,63 @@ export function Services() {
         </div>
       </section>
 
-      {/* Service Tabs */}
-      <section className="py-24 bg-background">
+      {/* Service Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
 
-          {/* Tab Navigation */}
-          <div className="flex flex-wrap gap-2 justify-center mb-16">
-            {services.map((s, i) => (
-              <button
-                key={i}
-                onClick={() => setActiveTab(i)}
-                className={`flex items-center gap-2 px-5 py-3 rounded-lg text-sm font-semibold border transition-all duration-200 ${
-                  activeTab === i
-                    ? "bg-[#0b0d82] text-white border-[#0b0d82] shadow-sm"
-                    : "bg-background text-muted-foreground border-border hover:border-[#0b0d82]/40 hover:text-foreground"
-                }`}
-              >
-                <s.icon className="w-4 h-4" />
-                {s.title}
-              </button>
-            ))}
-          </div>
+          {/* ── DESKTOP: side-menu + content panel ── */}
+          <div className="hidden lg:grid lg:grid-cols-[260px_1fr] gap-12 items-start">
 
-          {/* Tab Content */}
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -20 }}
-              transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto"
-            >
-              {/* Left — Text Content */}
-              <div>
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-14 h-14 rounded-xl bg-[#0b0d82]/10 flex items-center justify-center">
-                    {React.createElement(services[activeTab].icon, { className: "w-7 h-7 text-[#0b0d82]" })}
-                  </div>
-                  <h2 className="text-3xl font-display font-bold text-foreground">{services[activeTab].title}</h2>
+            {/* Left: vertical side-menu */}
+            <nav className="sticky top-28 bg-card border border-border rounded-2xl overflow-hidden shadow-sm">
+              {services.map((s, i) => (
+                <button
+                  key={i}
+                  onClick={() => setActiveTab(i)}
+                  className={`w-full flex items-center gap-3 px-5 py-4 text-sm font-medium text-left transition-all duration-200 border-l-4 ${
+                    activeTab === i
+                      ? "border-l-[#0b0d82] bg-[#0b0d82]/6 text-[#0b0d82] font-semibold"
+                      : "border-l-transparent text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  } ${i !== 0 ? "border-t border-border" : ""}`}
+                >
+                  <s.icon className={`w-4 h-4 shrink-0 ${activeTab === i ? "text-[#0b0d82]" : "text-muted-foreground"}`} />
+                  {s.title}
+                </button>
+              ))}
+            </nav>
+
+            {/* Right: content panel — image on top, text below */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={activeTab}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -16 }}
+                transition={{ duration: 0.28 }}
+              >
+                {/* Image — top */}
+                <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[16/9] bg-secondary mb-8">
+                  <img
+                    src={activeService.image}
+                    alt={activeService.title}
+                    className="w-full h-full object-cover"
+                    onError={(e) => { e.currentTarget.style.opacity = "0"; }}
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d82]/40 to-transparent pointer-events-none" />
                 </div>
 
-                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-                  {services[activeTab].desc}
-                </p>
+                {/* Text — below */}
+                <div className="flex items-center gap-4 mb-5">
+                  <div className="w-12 h-12 rounded-xl bg-[#0b0d82]/10 flex items-center justify-center shrink-0">
+                    {React.createElement(activeService.icon, { className: "w-6 h-6 text-[#0b0d82]" })}
+                  </div>
+                  <h2 className="text-3xl font-display font-bold text-foreground">{activeService.title}</h2>
+                </div>
 
-                <ul className="space-y-3 mb-10">
-                  {services[activeTab].points.map((pt, j) => (
+                <p className="text-lg text-muted-foreground mb-7 leading-relaxed">{activeService.desc}</p>
+
+                <ul className="space-y-3 mb-8">
+                  {activeService.points.map((pt, j) => (
                     <li key={j} className="flex items-start gap-3 text-foreground">
                       <CheckCircle2 className="w-5 h-5 text-[#f97316] shrink-0 mt-0.5" />
                       <span>{pt}</span>
@@ -163,25 +178,93 @@ export function Services() {
                 </ul>
 
                 <Link
-                  href={`/request-quote?service=${SERVICE_SLUGS[services[activeTab].title] || encodeURIComponent(services[activeTab].title)}`}
+                  href={quoteLink(activeService.title)}
                   className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-12 px-8 shadow-md"
                 >
                   Request a Quote <ChevronRight className="ml-2 w-5 h-5" />
                 </Link>
-              </div>
+              </motion.div>
+            </AnimatePresence>
+          </div>
 
-              {/* Right — Service Image */}
-              <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[16/10] bg-secondary">
-                <img
-                  src={services[activeTab].image}
-                  alt={services[activeTab].title}
-                  className="w-full h-full object-cover"
-                  onError={(e) => { e.currentTarget.style.opacity = "0"; }}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d82]/40 to-transparent pointer-events-none" />
-              </div>
-            </motion.div>
-          </AnimatePresence>
+          {/* ── MOBILE: accordion ── */}
+          <div className="lg:hidden space-y-3">
+            {services.map((s, i) => {
+              const isOpen = openAccordion === i;
+              return (
+                <div
+                  key={i}
+                  className={`border rounded-2xl overflow-hidden transition-all duration-200 ${
+                    isOpen ? "border-[#0b0d82]/40 shadow-md" : "border-border"
+                  }`}
+                >
+                  {/* Accordion Header */}
+                  <button
+                    onClick={() => setOpenAccordion(isOpen ? null : i)}
+                    className={`w-full flex items-center justify-between gap-3 px-5 py-4 text-left transition-colors ${
+                      isOpen ? "bg-[#0b0d82] text-white" : "bg-card text-foreground hover:bg-secondary"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3">
+                      <s.icon className={`w-5 h-5 shrink-0 ${isOpen ? "text-white" : "text-[#0b0d82]"}`} />
+                      <span className="font-semibold text-sm">{s.title}</span>
+                    </div>
+                    <ChevronDown
+                      className={`w-5 h-5 shrink-0 transition-transform duration-300 ${isOpen ? "rotate-180 text-white" : "text-muted-foreground"}`}
+                    />
+                  </button>
+
+                  {/* Accordion Body */}
+                  <AnimatePresence initial={false}>
+                    {isOpen && (
+                      <motion.div
+                        key="body"
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3, ease: "easeInOut" }}
+                        className="overflow-hidden"
+                      >
+                        <div className="p-5 bg-card">
+                          {/* Image */}
+                          <div className="relative rounded-xl overflow-hidden shadow aspect-[16/9] bg-secondary mb-5">
+                            <img
+                              src={s.image}
+                              alt={s.title}
+                              className="w-full h-full object-cover"
+                              onError={(e) => { e.currentTarget.style.opacity = "0"; }}
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d82]/40 to-transparent pointer-events-none" />
+                          </div>
+
+                          {/* Description */}
+                          <p className="text-muted-foreground mb-5 leading-relaxed text-sm">{s.desc}</p>
+
+                          {/* Bullets */}
+                          <ul className="space-y-2.5 mb-6">
+                            {s.points.map((pt, j) => (
+                              <li key={j} className="flex items-start gap-2.5 text-foreground text-sm">
+                                <CheckCircle2 className="w-4 h-4 text-[#f97316] shrink-0 mt-0.5" />
+                                <span>{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+
+                          {/* CTA */}
+                          <Link
+                            href={quoteLink(s.title)}
+                            className="inline-flex items-center justify-center rounded-full text-sm font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-11 px-7 shadow-md w-full"
+                          >
+                            Request a Quote <ChevronRight className="ml-2 w-4 h-4" />
+                          </Link>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+              );
+            })}
+          </div>
 
         </div>
       </section>
