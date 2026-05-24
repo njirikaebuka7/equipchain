@@ -99,9 +99,6 @@ export function AdminLogin() {
             </form>
           </Form>
 
-          <div className="mt-8 text-center text-xs text-muted-foreground">
-            <p>Default credentials for dev: admin / admin123</p>
-          </div>
         </div>
       </div>
     </div>

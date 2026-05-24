@@ -3,7 +3,11 @@ import { adminUsersTable, blogPostsTable, siteSettingsTable } from "@workspace/d
 import bcrypt from "bcryptjs";
 
 async function seed() {
-  console.log("Seeding database...");
+  if (process.env.NODE_ENV === "production") {
+    console.error("Seed script must not run in production. Exiting.");
+    process.exit(1);
+  }
+  console.log("Seeding database (dev/test only)...");
 
   // Create admin user
   const passwordHash = await bcrypt.hash("admin123", 12);

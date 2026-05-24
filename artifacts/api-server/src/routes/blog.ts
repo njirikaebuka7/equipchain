@@ -132,8 +132,11 @@ router.get("/blog/posts/:slug", async (req, res) => {
       return;
     }
 
-    // If not admin session, only show published posts
-    if (post.status !== "published") {
+    // If not admin session, only show published posts that are past their publish date
+    if (
+      post.status !== "published" ||
+      (post.publishedAt && post.publishedAt > now)
+    ) {
       res.status(404).json({ error: "Post not found" });
       return;
     }
