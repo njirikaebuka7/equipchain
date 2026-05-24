@@ -70,7 +70,7 @@ export function Contact() {
             
             {/* Contact Form */}
             <div className="bg-card border border-border p-8 md:p-10 rounded-3xl shadow-sm">
-              <h2 className="text-3xl font-display font-bold text-foreground mb-8">Send a Message</h2>
+              <h2 className="text-3xl font-semibold text-foreground mb-8">Send a Message</h2>
               
               {isSuccess ? (
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-8 rounded-2xl text-center">
@@ -195,7 +195,7 @@ export function Contact() {
             {/* Contact Info */}
             <div className="space-y-8">
               <div className="bg-[#0b0d82] text-white p-10 rounded-3xl shadow-xl">
-                <h3 className="text-2xl font-display font-bold mb-8">Contact Information</h3>
+                <h3 className="text-2xl font-semibold mb-8">Contact Information</h3>
                 
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">

@@ -75,7 +75,7 @@ export function Insights() {
                   </div>
                   
                   <div className="p-8 flex flex-col flex-1">
-                    <h2 className="text-2xl font-display font-bold text-foreground mb-4 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
+                    <h2 className="text-2xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
                       <Link href={`/insights/${post.slug}`}>{post.title}</Link>
                     </h2>
                     

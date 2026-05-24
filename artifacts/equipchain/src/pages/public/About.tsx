@@ -66,7 +66,7 @@ export function About() {
               <div className="w-16 h-16 rounded-xl bg-[#0b0d82]/10 flex items-center justify-center mb-6">
                 <Target className="w-8 h-8 text-[#0b0d82]" />
               </div>
-              <h3 className="text-2xl font-display font-bold mb-4">Vision Statement</h3>
+              <h3 className="text-2xl font-semibold mb-4">Vision Statement</h3>
               <p className="text-muted-foreground text-lg">
                 To become a trusted indigenous service company recognized for operational excellence, reliability and strategic value delivery within Nigeria's oil & gas, industrial and infrastructure sectors.
               </p>
@@ -75,7 +75,7 @@ export function About() {
               <div className="w-16 h-16 rounded-xl bg-white/10 flex items-center justify-center mb-6">
                 <Zap className="w-8 h-8 text-[#f97316]" />
               </div>
-              <h3 className="text-2xl font-display font-bold mb-4">Mission Statement</h3>
+              <h3 className="text-2xl font-semibold mb-4">Mission Statement</h3>
               <p className="text-white/80 text-lg">
                 To provide dependable procurement, logistics, industrial support and project coordination solutions through professionalism, integrity, responsiveness and continuous commitment to client satisfaction.
               </p>

@@ -108,7 +108,7 @@ export function Industries() {
                 <div className="absolute inset-0 bg-black/40 group-hover:bg-black/60 transition-colors duration-500" />
                 <div className="relative p-8 h-full flex flex-col">
                   <ind.icon className="w-12 h-12 text-[#f97316] mb-6" />
-                  <h3 className="text-3xl font-display font-bold mb-4">{ind.title}</h3>
+                  <h3 className="text-3xl font-semibold mb-4">{ind.title}</h3>
                   <p className="text-white/80 mb-6 flex-1">{ind.desc}</p>
                   
                   <div className="h-0 opacity-0 group-hover:h-auto group-hover:opacity-100 transition-all duration-500 overflow-hidden">
@@ -127,7 +127,7 @@ export function Industries() {
           </div>
 
           <div className="mt-20 text-center">
-            <h3 className="text-3xl font-display font-bold text-foreground mb-6">Working in one of these sectors? Let's talk.</h3>
+            <h3 className="text-3xl font-semibold text-foreground mb-6">Working in one of these sectors? Let's talk.</h3>
             <Link href="/contact" className="inline-flex items-center justify-center rounded-md text-base font-semibold transition-colors focus-visible:outline-none bg-[#f97316] text-white hover:bg-[#f97316]/90 h-14 px-10 shadow-lg">
               Contact Us <ArrowRight className="ml-2 w-5 h-5" />
             </Link>

@@ -123,7 +123,7 @@ export function Services() {
                   <div className="w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-8">
                     {React.createElement(services[activeTab].icon, { className: "w-8 h-8 text-[#f97316]" })}
                   </div>
-                  <h2 className="text-3xl font-display font-bold text-foreground mb-4">{services[activeTab].title}</h2>
+                  <h2 className="text-3xl font-semibold text-foreground mb-4">{services[activeTab].title}</h2>
                   <p className="text-lg text-muted-foreground mb-8 pb-8 border-b border-border">
                     {services[activeTab].desc}
                   </p>

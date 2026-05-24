@@ -120,7 +120,7 @@ export function RequestQuote() {
               <div className="w-24 h-24 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-6">
                 <CheckCircle2 className="w-12 h-12 text-green-600 dark:text-green-400" />
               </div>
-              <h2 className="text-3xl font-display font-bold text-foreground mb-4">Quote Request Submitted</h2>
+              <h2 className="text-3xl font-semibold text-foreground mb-4">Quote Request Submitted</h2>
               <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
                 Thank you for your interest in EquipChain Global Ltd. Our procurement specialists are reviewing your requirements and will contact you shortly with a customized proposal.
               </p>
@@ -178,7 +178,7 @@ export function RequestQuote() {
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          <h3 className="text-2xl font-display font-bold text-foreground border-b border-border pb-4 mb-6">1. Basic Information</h3>
+                          <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-4 mb-6">1. Basic Information</h3>
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <FormField
                               control={form.control}
@@ -247,7 +247,7 @@ export function RequestQuote() {
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          <h3 className="text-2xl font-display font-bold text-foreground border-b border-border pb-4 mb-6">2. Select Service Needed</h3>
+                          <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-4 mb-6">2. Select Service Needed</h3>
                           <FormField
                             control={form.control}
                             name="serviceType"
@@ -302,7 +302,7 @@ export function RequestQuote() {
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          <h3 className="text-2xl font-display font-bold text-foreground border-b border-border pb-4 mb-6">3. Request Details</h3>
+                          <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-4 mb-6">3. Request Details</h3>
                           
                           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                             <FormField
@@ -391,7 +391,7 @@ export function RequestQuote() {
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          <h3 className="text-2xl font-display font-bold text-foreground border-b border-border pb-4 mb-6">4. Additional Information</h3>
+                          <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-4 mb-6">4. Additional Information</h3>
                           
                           <FormField
                             control={form.control}
@@ -434,7 +434,7 @@ export function RequestQuote() {
                           exit={{ opacity: 0, x: -20 }}
                           className="space-y-6"
                         >
-                          <h3 className="text-2xl font-display font-bold text-foreground border-b border-border pb-4 mb-6">5. Review & Submit</h3>
+                          <h3 className="text-2xl font-semibold text-foreground border-b border-border pb-4 mb-6">5. Review & Submit</h3>
                           
                           <div className="bg-secondary/50 rounded-2xl p-6 space-y-6">
                             <div className="grid grid-cols-2 gap-4 text-sm">

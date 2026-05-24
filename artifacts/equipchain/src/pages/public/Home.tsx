@@ -172,7 +172,7 @@ export function Home() {
                 <div className="w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-6 group-hover:bg-[#f97316] transition-colors duration-300">
                   <service.icon className="w-8 h-8 text-[#0b0d82] group-hover:text-white transition-colors duration-300" />
                 </div>
-                <h4 className="text-2xl font-display font-bold mb-4 text-foreground">{service.title}</h4>
+                <h4 className="text-2xl font-semibold mb-4 text-foreground">{service.title}</h4>
                 <p className="text-muted-foreground mb-6">{service.desc}</p>
                 <Link href="/services" className="inline-flex items-center font-semibold text-[#0b0d82] hover:text-[#f97316] transition-colors">
                   Read More <ArrowRight className="ml-2 w-4 h-4" />
@@ -217,7 +217,7 @@ export function Home() {
                 <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
                 <div className="relative z-10">
                   <ind.icon className="w-10 h-10 text-[#f97316] mb-4 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300" />
-                  <h4 className="text-2xl font-display font-bold text-white mb-2 transform group-hover:-translate-y-2 transition-transform duration-300">{ind.title}</h4>
+                  <h4 className="text-2xl font-semibold text-white mb-2 transform group-hover:-translate-y-2 transition-transform duration-300">{ind.title}</h4>
                 </div>
               </Link>
             ))}
@@ -235,7 +235,7 @@ export function Home() {
                 <div className="w-12 h-1 bg-[#f97316]"></div>
                 <h2 className="text-[#0b0d82] font-semibold tracking-wider uppercase text-sm">Capabilities</h2>
               </div>
-              <h3 className="text-3xl font-display font-bold mb-6 text-foreground">Operational Exposure</h3>
+              <h3 className="text-3xl font-semibold mb-6 text-foreground">Operational Exposure</h3>
               <p className="text-muted-foreground mb-8">
                 Our management team brings practical understanding of procurement systems, operational coordination, and industrial support processes from major environments including Chevron, ExxonMobil, and Dangote Group.
               </p>
@@ -253,7 +253,7 @@ export function Home() {
                   <div className="w-12 h-1 bg-[#f97316]"></div>
                   <h2 className="text-white/80 font-semibold tracking-wider uppercase text-sm">HSE Commitment</h2>
                 </div>
-                <h3 className="text-3xl font-display font-bold mb-6 text-white">Zero Incident Mindset</h3>
+                <h3 className="text-3xl font-semibold mb-6 text-white">Zero Incident Mindset</h3>
                 <p className="text-white/80 mb-8">
                   EquipChain Global Ltd is committed to maintaining safe and environmentally responsible operations through adherence to safety procedures, operational risk awareness, and continuous HSE improvement culture.
                 </p>
@@ -312,7 +312,7 @@ export function Home() {
                         {post.category}
                       </span>
                     )}
-                    <h4 className="text-lg font-display font-bold text-foreground mb-3 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
+                    <h4 className="text-lg font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
                       {post.title}
                     </h4>
                     {post.excerpt && (

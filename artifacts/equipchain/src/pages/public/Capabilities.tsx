@@ -70,7 +70,7 @@ export function Capabilities() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {coreCapabilities.map((cap, i) => (
               <div key={i} className="bg-card border border-border p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-2xl font-display font-bold text-[#0b0d82] mb-6 pb-4 border-b border-border">{cap.title}</h3>
+                <h3 className="text-2xl font-semibold text-[#0b0d82] mb-6 pb-4 border-b border-border">{cap.title}</h3>
                 <ul className="space-y-3">
                   {cap.points.map((pt, j) => (
                     <li key={j} className="flex items-start gap-3 text-muted-foreground">
@@ -97,7 +97,7 @@ export function Capabilities() {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
               {["Chevron Corporation", "ExxonMobil", "Dangote Group"].map((brand, i) => (
                 <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-border flex items-center justify-center h-32">
-                  <span className="font-display font-bold text-2xl text-foreground/80">{brand}</span>
+                  <span className="font-semibold text-2xl text-foreground/80">{brand}</span>
                 </div>
               ))}
             </div>
