@@ -85,7 +85,7 @@ export function RequestQuote() {
     if (serviceLabel) {
       setPreSelectedService(serviceLabel);
       form.setValue("serviceType", serviceLabel);
-      setStep(3); // Jump straight to step 3 — service is pre-selected
+      // Stay on step 1 (Basic Info) — handleNext will skip step 2 automatically
     }
   }, []);
 
