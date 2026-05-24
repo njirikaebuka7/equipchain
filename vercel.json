@@ -5,7 +5,7 @@
   "outputDirectory": "apps/web/dist/public",
   "framework": null,
   "functions": {
-    "api/index.js": {
+    "api/index.mjs": {
       "maxDuration": 30,
       "memory": 512
     }
@@ -13,7 +13,7 @@
   "rewrites": [
     {
       "source": "/api/:path*",
-      "destination": "/api/index"
+      "destination": "/api/index.mjs"
     },
     {
       "source": "/((?!api/).*)",
