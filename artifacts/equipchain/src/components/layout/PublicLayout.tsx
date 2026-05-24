@@ -5,31 +5,73 @@ import logoImg from "@assets/Gemini_Generated_Image_mnnghgmnnghgmnng_17796292812
 
 export function PublicLayout({ children }: { children: React.ReactNode }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const [location] = useLocation();
 
   const closeMenu = () => setIsMobileMenuOpen(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setIsScrolled(false);
   }, [location]);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinkClass = (active: boolean) =>
+    `text-sm font-medium transition-colors duration-200 ${
+      isScrolled
+        ? active
+          ? "text-primary"
+          : "text-muted-foreground hover:text-primary"
+        : active
+        ? "text-[#f97316]"
+        : "text-white/90 hover:text-white"
+    }`;
+
+  const dropdownTriggerClass = (active: boolean) =>
+    `flex items-center gap-1 text-sm font-medium transition-colors duration-200 ${
+      isScrolled
+        ? active
+          ? "text-primary"
+          : "text-muted-foreground hover:text-primary"
+        : active
+        ? "text-[#f97316]"
+        : "text-white/90 hover:text-white"
+    }`;
 
   return (
     <div className="flex flex-col min-h-[100dvh] bg-background text-foreground">
-      <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm">
+      {/* Fixed navigation */}
+      <header
+        className={`fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300 ${
+          isScrolled
+            ? "border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 shadow-sm"
+            : "bg-transparent"
+        }`}
+      >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
+            {/* Logo — white when nav is transparent, color when scrolled */}
             <Link href="/" className="flex items-center" data-testid="logo-link">
-              <img src={logoImg} alt="EquipChain Global Ltd" className="h-11 w-auto" />
+              <img
+                src={logoImg}
+                alt="EquipChain Global Ltd"
+                className={`h-11 w-auto transition-all duration-300 ${isScrolled ? "" : "brightness-0 invert"}`}
+              />
             </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center gap-8">
-              <Link href="/" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/' ? 'text-primary' : 'text-muted-foreground'}`}>Home</Link>
-              <Link href="/about" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/about' ? 'text-primary' : 'text-muted-foreground'}`}>About Us</Link>
+              <Link href="/" className={navLinkClass(location === "/")}>Home</Link>
+              <Link href="/about" className={navLinkClass(location === "/about")}>About Us</Link>
 
               <div className="relative group">
-                <button className={`flex items-center gap-1 text-sm font-medium transition-colors hover:text-primary ${location.startsWith('/services') || location.startsWith('/industries') || location.startsWith('/capabilities') ? 'text-primary' : 'text-muted-foreground'}`}>
+                <button className={dropdownTriggerClass(location.startsWith("/services") || location.startsWith("/industries") || location.startsWith("/capabilities"))}>
                   Services <ChevronDown className="w-4 h-4 transition-transform group-hover:rotate-180" />
                 </button>
                 <div className="absolute top-full left-0 pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 w-52">
@@ -41,15 +83,15 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 </div>
               </div>
 
-              <Link href="/hse" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/hse' ? 'text-primary' : 'text-muted-foreground'}`}>HSE</Link>
-              <Link href="/insights" className={`text-sm font-medium transition-colors hover:text-primary ${location.startsWith('/insights') ? 'text-primary' : 'text-muted-foreground'}`}>Insights</Link>
-              <Link href="/contact" className={`text-sm font-medium transition-colors hover:text-primary ${location === '/contact' ? 'text-primary' : 'text-muted-foreground'}`}>Contact Us</Link>
+              <Link href="/hse" className={navLinkClass(location === "/hse")}>HSE</Link>
+              <Link href="/insights" className={navLinkClass(location.startsWith("/insights"))}>Insights</Link>
+              <Link href="/contact" className={navLinkClass(location === "/contact")}>Contact Us</Link>
             </nav>
 
             <div className="hidden lg:block">
               <Link
                 href="/request-quote"
-                className="inline-flex items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring bg-[#f97316] text-white shadow-sm hover:bg-[#ea6500] h-10 px-6"
+                className="inline-flex items-center justify-center rounded-full text-sm font-semibold transition-colors focus-visible:outline-none bg-[#f97316] text-white shadow-sm hover:bg-[#ea6500] h-10 px-6"
                 data-testid="btn-request-quote"
               >
                 Request a Quote
@@ -58,7 +100,9 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
 
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="lg:hidden inline-flex items-center justify-center p-2 rounded-md text-foreground hover:bg-secondary focus:outline-none"
+              className={`lg:hidden inline-flex items-center justify-center p-2 rounded-md focus:outline-none transition-colors ${
+                isScrolled ? "text-foreground hover:bg-secondary" : "text-white hover:bg-white/10"
+              }`}
               data-testid="btn-mobile-menu"
             >
               <span className="sr-only">Open main menu</span>
@@ -93,6 +137,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
         )}
       </header>
 
+      {/* Main content — starts at y=0, hero sections provide their own top padding */}
       <main className="flex-1">
         {children}
       </main>

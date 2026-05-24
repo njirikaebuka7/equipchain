@@ -38,6 +38,14 @@ const SERVICE_OPTIONS = [
   "Other"
 ];
 
+const SERVICE_SLUG_MAP: Record<string, string> = {
+  "procurement-supply": "Procurement & Supply",
+  "supply-chain-logistics": "Supply Chain & Logistics",
+  "oil-gas-support": "Oil & Gas Support",
+  "project-support": "Project Support",
+  "industrial-services": "Industrial Services",
+};
+
 export function RequestQuote() {
   const [step, setStep] = useState(1);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -70,10 +78,14 @@ export function RequestQuote() {
     window.scrollTo(0, 0);
 
     const params = new URLSearchParams(window.location.search);
-    const serviceParam = params.get("service");
-    if (serviceParam && SERVICE_OPTIONS.includes(serviceParam)) {
-      setPreSelectedService(serviceParam);
-      form.setValue("serviceType", serviceParam);
+    const serviceSlug = params.get("service");
+    const serviceLabel = serviceSlug
+      ? (SERVICE_SLUG_MAP[serviceSlug] ?? (SERVICE_OPTIONS.includes(serviceSlug) ? serviceSlug : null))
+      : null;
+    if (serviceLabel) {
+      setPreSelectedService(serviceLabel);
+      form.setValue("serviceType", serviceLabel);
+      setStep(3); // Jump straight to step 3 — service is pre-selected
     }
   }, []);
 

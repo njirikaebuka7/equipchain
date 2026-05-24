@@ -14,6 +14,14 @@ export function Services() {
 
   const base = import.meta.env.BASE_URL;
 
+  const SERVICE_SLUGS: Record<string, string> = {
+    "Procurement & Supply": "procurement-supply",
+    "Supply Chain & Logistics": "supply-chain-logistics",
+    "Oil & Gas Support": "oil-gas-support",
+    "Project Support": "project-support",
+    "Industrial Services": "industrial-services",
+  };
+
   const services = [
     {
       title: "Procurement & Supply",
@@ -155,7 +163,7 @@ export function Services() {
                 </ul>
 
                 <Link
-                  href={`/request-quote?service=${encodeURIComponent(services[activeTab].title)}`}
+                  href={`/request-quote?service=${SERVICE_SLUGS[services[activeTab].title] || encodeURIComponent(services[activeTab].title)}`}
                   className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-12 px-8 shadow-md"
                 >
                   Request a Quote <ChevronRight className="ml-2 w-5 h-5" />

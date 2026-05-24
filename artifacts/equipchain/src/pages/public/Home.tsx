@@ -41,7 +41,7 @@ export function Home() {
           backgroundImage: `url(${heroImg})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
-          minHeight: "calc(100vh - 80px)"
+          minHeight: "100vh"
         }}
       >
         <div className="absolute inset-0 bg-gradient-to-br from-[#0b0d82]/88 via-[#0b0d82]/75 to-[#1a1a2e]/85 z-0" />
