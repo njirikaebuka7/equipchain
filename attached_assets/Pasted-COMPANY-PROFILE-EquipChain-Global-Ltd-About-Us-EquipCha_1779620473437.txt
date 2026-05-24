@@ -1,0 +1,721 @@
+COMPANY PROFILE
+EquipChain Global Ltd
+
+About Us
+EquipChain Global Ltd. is an indigenous Nigerian procurement, supply chain, logistics, and industrial support company providing reliable solutions to the oil & gas, energy, manufacturing, infrastructure, mining, water, and process-driven sectors.
+We connect industries to trusted equipment, instrumentation, automation products, industrial materials, and technical supplies through a responsive end-to-end procurement and logistics support model. With strong local market understanding, global supplier networks, technical knowledge, and practical industry experience, we help clients simplify sourcing, reduce operational delays, control costs, and maintain business continuity.
+Driven by integrity, responsiveness, safety, professionalism, and execution excellence, EquipChain Global Ltd. is committed to building long-term partnerships and delivering dependable support solutions that keep critical operations moving.
+
+Vision Statement
+To become a trusted indigenous service company recognized for operational excellence, reliability and strategic value delivery within Nigeria’s oil & gas, industrial and infrastructure sectors.
+
+Mission Statement
+To provide dependable procurement, logistics, industrial support and project coordination solutions through professionalism, integrity, responsiveness and continuous commitment to client satisfaction.
+
+Core Values
+•	Integrity 
+•	Professionalism 
+•	Reliability 
+•	Responsiveness 
+•	Safety Consciousness 
+•	Accountability 
+•	Excellence 
+•	Client Satisfaction 
+
+Our Services
+Procurement & Supply Services
+•	Industrial materials sourcing 
+•	Procurement support services 
+•	Local and international sourcing coordination 
+•	Supply of industrial consumables 
+•	Vendor sourcing and coordination 
+•	Technical procurement support 
+Supply Chain & Logistics Support
+•	Materials coordination 
+•	Inventory support services 
+•	Logistics coordination 
+•	Vendor management support 
+•	Supply chain administration 
+•	Delivery coordination services 
+Oil & Gas Support Services
+•	Operational support services 
+•	Industrial support solutions 
+•	Project materials coordination 
+•	Site support services 
+•	Equipment sourcing support 
+•	Technical support coordination 
+Project Support & Coordination
+•	Project coordination support 
+•	Site operations support 
+•	Contractor coordination 
+•	Project logistics administration 
+•	Documentation support 
+•	Field operational assistance 
+General Contracts & Industrial Services
+•	Industrial supplies 
+•	Facility support services 
+•	General contracting 
+•	Outsourcing support services 
+•	Business support solutions 
+
+Management & Industry Experience
+The management team of EquipChain Global Ltd possesses industry experience developed through active participation in procurement, supply chain management, logistics coordination and operational support activities across Nigeria’s oil & gas and industrial sectors.
+Management exposure includes operational environments and industry engagements linked to organizations such as:
+•	Chevron Corporation 
+•	ExxonMobil 
+•	Dangote Group 
+This experience provides the company with practical understanding of:
+•	industry procurement processes, 
+•	vendor expectations, 
+•	operational compliance, 
+•	project coordination requirements, 
+•	supply chain efficiency, 
+•	client service delivery standards. 
+
+Selected Industry Exposure
+Oil & Gas Sector
+•	Procurement coordination support 
+•	Materials sourcing and supply support 
+•	Vendor coordination activities 
+•	Logistics and operational support participation 
+Manufacturing & Industrial Sector
+•	Industrial materials support 
+•	Vendor and supply coordination 
+•	Operational support services 
+•	Procurement administration assistance 
+Infrastructure & Project Environment
+•	Site coordination support 
+•	Contractor liaison support 
+•	Materials logistics coordination 
+•	Project execution assistance 
+
+Why Choose EquipChain Global Ltd
+•	Experienced management exposure 
+•	Strong understanding of Nigerian operational environment 
+•	Industry relationship network 
+•	Responsive service delivery approach 
+•	Commitment to professionalism and integrity 
+•	Flexible and client-focused operations 
+•	Strong coordination and execution support capability 
+
+
+
+HSE Commitment
+EquipChain Global Ltd is committed to conducting its operations in a safe, responsible and environmentally conscious manner.
+The company promotes:
+•	safe work practices, 
+•	compliance with applicable regulations, 
+•	risk awareness, 
+•	continuous improvement in health, safety and environmental performance. 
+
+Corporate Objective
+Our objective is to build long-term business relationships by consistently delivering dependable, efficient and value-oriented services that support our clients’ operational and project success.
+
+CAPABILITY STATEMENT
+EquipChain Global Ltd
+COMPANY OVERVIEW
+EquipChain Global Ltd is a Nigerian indigenous procurement, supply chain, logistics and industrial support services company established to provide efficient and reliable operational support solutions to the oil & gas, manufacturing, infrastructure and commercial sectors.
+The company is driven by experienced professionals with practical industry exposure in procurement coordination, logistics management, operational support and project administration within major industrial environments.
+
+CORE CAPABILITIES
+Procurement & Strategic Sourcing
+•	Industrial procurement support 
+•	Technical sourcing coordination 
+•	Vendor identification and engagement 
+•	Local supply chain coordination 
+•	Procurement administration support 
+Logistics & Supply Chain Support
+•	Materials coordination 
+•	Delivery logistics support 
+•	Inventory coordination 
+•	Vendor management support 
+•	Operational logistics assistance 
+Oil & Gas Support Services
+•	Project operational support 
+•	Site coordination support 
+•	Equipment sourcing assistance 
+•	Materials support coordination 
+•	Technical operational assistance 
+Project Support Services
+•	Project coordination assistance 
+•	Contractor support coordination 
+•	Documentation and reporting support 
+•	Site operational administration 
+•	Execution support services 
+
+INDUSTRY EXPERIENCE
+Management and operational exposure includes participation in activities linked to:
+•	Chevron Corporation operational environments 
+•	ExxonMobil operational support environments 
+•	Dangote Group industrial operations 
+The management team brings practical understanding of:
+•	procurement systems, 
+•	operational coordination, 
+•	industrial support processes, 
+•	logistics administration, 
+•	vendor engagement practices, 
+•	project support requirements. 
+
+COMPETITIVE ADVANTAGE
+What Distinguishes Us
+•	Experienced management background 
+•	Strong local market understanding 
+•	Flexible operational structure 
+•	Fast response capability 
+•	Relationship-driven service approach 
+•	Commitment to professionalism and integrity 
+•	Client-focused execution model 
+
+HEALTH, SAFETY & ENVIRONMENT (HSE)
+EquipChain Global Ltd is committed to maintaining safe and environmentally responsible operations through:
+•	adherence to safety procedures, 
+•	operational risk awareness, 
+•	responsible work practices, 
+•	continuous HSE improvement culture. 
+
+OUR COMMITMENT
+We are committed to delivering:
+•	dependable service, 
+•	operational efficiency, 
+•	responsive support, 
+•	professional execution, 
+•	long-term value to clients and partners.
+
+Design guide:
+
+# PROJECT PROMPT: Build a Premium Multi-Page Website for EquipChain Global Ltd
+You are a senior full-stack web developer, product designer, UI/UX expert, SEO strategist, brand designer, and conversion-focused website architect with over 20 years of experience building premium websites for oil & gas, industrial procurement, logistics, energy, and engineering companies.
+Build a beautiful, modern, scalable, SEO-oriented, mobile-first corporate website for **EquipChain Global Ltd**.
+The website must look like a premium **$10,000 corporate industrial website**, not a basic template. It must feel trustworthy, modern, polished, industrial, clean, corporate, and highly professional.
+This must be a **full multi-page website**, not a one-page landing page.
+
+# 1. Company Overview
+**Company Name:** EquipChain Global Ltd
+
+**Business Type:**  
+EquipChain Global Ltd is an indigenous Nigerian procurement, supply chain, logistics, industrial support, engineering support, and project coordination company serving oil & gas, energy, manufacturing, infrastructure, mining, water, and other process-driven industries.
+The company connects industries to trusted equipment, instrumentation, automation products, industrial materials, spare parts, technical supplies, logistics support, and industrial services through reliable local and global supplier networks.
+The website should position EquipChain Global Ltd as a dependable partner for:
+
+- Oil & gas procurement
+- Industrial equipment sourcing
+- Supply chain support
+- Logistics coordination
+- Project support
+- General industrial services
+- HSE-conscious operations
+- Technical supply and instrumentation sourcing
+- Industrial material supply
+- End-to-end procurement support
+
+
+# 2. Important Multi-Page Website Instruction
+Do **not** build this website as a one-page landing page.
+
+This must be a full multi-page corporate website with dedicated individual pages and routes.
+
+Each of the following must be built as its own standalone page with its own route, SEO title, meta description, page content, and structured layout:
+
+1. Home
+2. About Us
+3. Services
+4. Industries
+5. Capabilities
+6. HSE
+7. Insights
+8. Single Blog Post
+9. Contact Us
+10.Request a Quote
+11.Privacy Policy
+12.Terms & Conditions
+13. Admin Login
+14. Admin Dashboard
+
+The homepage should include beautiful preview sections for About, Services, Industries, Capabilities, HSE, and Insights, but those preview sections must link to their full dedicated pages. The insights section of the homepage should have beautiful modern cards with the blog featured image.
+Do not make About, Services, Industries, Capabilities, HSE, Insights, Contact, or Request a Quote only sections on the homepage. They should also be real pages with proper routing.
+Use React Router or the appropriate routing system to create these individual pages.
+
+Each page must have:
+- Its own page component
+- Its own URL route
+- Its own SEO metadata
+- A clear H1 heading on a nice hero section
+- Proper internal links
+- Mobile-responsive layout
+- Consistent header and footer
+- Proper content hierarchy
+- Structured layout
+- Best images if required or cards where necessary.
+- Conversion-focused CTA
+
+Just be creative as possible.
+
+
+
+# 4. Brand Colors
+
+Recommended colors:
+Approximate color balance:
+- 60% white/light gray
+- 25% deep navy blue (0b0d82)
+- 10% industrial dark gray
+- 5% orange/gold accent
+Do not overuse orange. Orange should be an accent, not the main color.
+
+## Header / Navigation Design
+- Header should remain consistent across all public pages.
+
+## Desktop Header Layout
+
+Include:
+
+- logo on the left
+- Navigation links centered
+- “Request a Quote” CTA button on the right
+
+Navigation links:
+- Home
+- About Us
+- Services
+   - Industries (this should be a dropdown on the services link)
+   - Capabilities (this should be a dropdown on the services link)
+- HSE
+- Insights
+- Contact Us
+
+Primary CTA:
+- Request a Quote
+
+
+## Hero section should look glassy and premium with contents centered.
+
+## Mobile Header Layout
+- sticky mobile header
+- logo on the left
+- Clean hamburger menu on the right
+- Mobile menu should open smoothly
+- CTA button should be clearly visible inside the mobile menu
+- Ensure no crowding or oversized text on mobile and other devices
+- Mobile menu links must go to real routes, not homepage anchors
+
+---
+The footer should use a dark navy blue
+
+## Footer Design
+- Dark navy blue
+- White/light version of the logo
+- White and light gray text
+- Orange/gold accent for links, icons, dividers, and CTA highlights
+- Clean footer columns
+- Premium corporate spacing
+- Avoid making the footer too busy
+
+Footer should include:
+- White/light logo version
+- Short company description
+- Quick links
+- Services links
+- Contact information
+- Newsletter signup
+- Social media placeholders
+- Privacy Policy
+- Terms & Conditions
+- Copyright
+
+
+# 7. Overall Visual Style
+The website should feel:
+- Premium
+- Modern
+- Corporate
+- Industrial
+- Oil & gas aligned
+- Clean
+- Trustworthy
+- Scalable
+- Conversion-focused
+- SEO-focused
+- Highly mobile responsive
+
+Use high-quality industrial imagery such as:
+- Oil & gas workers
+- Engineers
+- Procurement/logistics scenes
+- Industrial equipment
+- Warehouses
+- Pipelines
+- Shipping/logistics
+- Instrumentation
+- Energy infrastructure
+- Technical supply operations
+
+Do not use childish icons or generic low-quality stock graphics.
+
+Use modern UI elements:
+
+- Premium and creative cards with nice hover animation states
+- Glassmorphism where appropriate
+- Subtle gradients
+- Smooth hover effects
+- Clean section transitions
+- Industrial-style background patterns
+- Soft shadows
+- Bold hero typography
+- Clear CTA buttons
+- Creative and mobile responsive Tabbed services page
+- Multi-step forms
+- Sticky mobile header
+
+
+The website should be creative and premium, inspired by modern industrial websites, but should beat their design style.
+
+Important:
+- Code must be clean, modular, scalable, and production-ready.
+- Use reusable components.
+- Use clean folder structure.
+- Avoid hardcoding repeated content.
+- Make the public website SEO-friendly.
+- Use semantic HTML.
+- Use accessible components.
+- Use optimized images.
+- Use mobile-first responsive design.
+- Separate frontend pages, components, hooks, layouts, utilities, and services properly.
+- Make future maintenance easy.
+
+# 9. SEO Requirements
+This website must be highly SEO-oriented.
+
+## Technical SEO
+Implement:
+- Proper semantic HTML: `header`, `main`, `section`, `article`, `footer`, `nav`
+- Every page must have a unique meta title
+- Every page must have a unique meta description
+- Add Open Graph tags for social sharing
+- Add Twitter card meta tags
+- Use canonical URLs
+- Add structured data using JSON-LD
+- Generate `sitemap.xml`
+- Generate `robots.txt`
+- Use clean, readable URLs
+- Optimize page speed
+- Lazy-load images
+- Use descriptive image alt text
+- Use proper heading hierarchy: one H1 per page, then H2/H3
+- Use internal linking between services, industries, capabilities, contact, request quote, and insights pages
+- Use breadcrumbs where suitable
+- Use optimized page titles targeting oil & gas procurement and industrial supply services
+- Avoid duplicate page titles and duplicate meta descriptions
+- Use SEO-friendly slugs for blog posts
+- Ensure all public pages are indexable except admin pages
+
+## Example SEO Keywords
+
+Use these naturally in content, not as keyword stuffing:
+
+- oil and gas procurement company in Nigeria
+- industrial equipment sourcing Nigeria
+- supply chain solutions for oil and gas
+- procurement and logistics support company
+- industrial supply company in Nigeria
+- oilfield equipment procurement
+- engineering support services Nigeria
+- project support and coordination
+- HSE compliant procurement services
+- technical supply and instrumentation sourcing
+- industrial logistics support
+- procurement company for energy sector
+- oil and gas supply chain support
+- industrial materials supplier Nigeria
+
+
+# 10. Required Public Website Pages
+
+Create these public pages:
+1. Home
+2. About Us
+3. Services
+4. Industries
+5. Capabilities
+6. HSE
+7. Insights / Blog
+8. Single Blog Post Page
+9. Contact Us
+10. Request a Quote
+11. Privacy Policy
+12. Terms & Conditions
+
+---
+# 20. Contact Page details
+
+Include:
+- beautiful, creative and mobile responsive Contact form
+- Company email (yolatoye@equipchainglobal.com)
+- Phone number (+2348072072332)
+- Address (Biviomat Nigeria Ltd Office 2nd floor, Aziom Plaza Opp. Old Nitel Exchange, Tabon-Tabon, Agege, Lagos State, Nigeria, West-Africa.) 
+- Google Map (display map for the address)
+- Business hours
+- Quick inquiry cards
+
+A quick note that admin should be able to configure the Phone number, address, and email of the website from the admin dashboard.
+
+Contact form fields:
+
+- Full Name
+- Company Name
+- Email
+- Phone Number
+- Inquiry Type
+- Message
+
+Use proper validation.
+After submission:
+- Save to database
+- Show success message
+- Notify admin if email notification is configured
+# 21. Request a Quote Page
+Create a beautiful Request a Quote page at `/request-quote`.
+Create a beautiful multi-step quote request form.
+-	Do not use one long form.
+
+The quote form must feel modern, smooth, and premium.
+
+## Multi-Step Form Flow
+### Step 1: Basic Information
+
+- Full Name
+- Company Name
+- Email Address
+- Phone Number
+
+### Step 2: Service Needed
+Use selectable cards:
+- Procurement & Supply
+- Supply Chain & Logistics
+- Oil & Gas Support
+- Project Support
+- Industrial Services
+- Other (if other is selected, a new input field should show for the user to enter the other service needed)
+
+### Step 3: Request Details
+- Product / service needed
+- Quantity, if applicable
+- Specification / description
+- Required delivery timeline
+- Preferred sourcing type: local / international / no preference
+
+Please note that these request details should be based on the service type selected here (### Step 2: Service Needed)
+
+### Step 4: Upload / Additional Info
+- Upload RFQ, BOQ, specification sheet, or supporting document
+- Additional message
+
+### Step 5: Review & Submit
+Show summary before submission.
+
+After submission:
+- Show success message
+- Send notification to admin if configured
+- Save request to database
+- Optional email confirmation to requester
+
+
+# 22. Form UX Rule
+All long forms must be multi-step.
+Do not create long boring forms.
+
+Use:
+- Progress indicator
+- Step title
+- Back/Next buttons
+- Validation per step
+- Review before submit
+- Success screen after submit
+- Mobile-friendly layout
+- Touch-friendly fields
+- Clear error messages
+
+Forms should feel premium and easy to complete.
+
+
+# 23. Admin Portal Requirements
+Create a secure admin portal for EquipChain staff.
+
+Admin portal route:
+- `/admin/login`
+- `/admin/dashboard`
+Admin pages must be protected.
+Only authenticated admin users should access the admin dashboard.
+
+
+# 24. Admin Dashboard
+Dashboard should show:
+- Total Published posts
+- Recent quote requests
+- Recent contact messages
+- Quick action: Create New Post
+- Quick action: View Quote Requests
+- Quick action: View Contact Messages
+
+Admin dashboard design should be clean, modern, professional, and easy to use and very mobile responsive.
+Use a beautiful collapsable side menu on desktop and beautiful bottom menu for mobile
+
+---
+
+# 25. Admin Post Management
+Admin must be able to:
+- Create post
+- Edit post
+- Delete post
+- Publish post
+- schedule post publishing date and time.
+- Upload featured image (indicate best dimension)
+- Add category
+- Add tags
+- Add excerpt
+- Add SEO title
+- Add SEO description
+- Add slug
+- Preview post
+- View all posts in a table
+Note that post creation should also be a nice multistep form and must retain contents when the user go to the previous step.
+
+Post fields:
+
+- Title
+- Slug
+- Category
+- Tags
+- Featured image
+- Excerpt
+- Content
+- SEO title
+- SEO meta description
+- Status: Draft / Published
+- Author
+- Created date
+- Updated date
+
+Published posts must appear on the public Insights page. 
+Draft posts must not appear publicly.
+
+
+# 26. Admin Quote Requests
+Admin should be able to:
+- View all quote requests
+- View request details
+- See uploaded files
+- Mark request status:
+  - New
+  - In Review
+  - Responded
+  - Closed
+- Delete request
+- Search/filter requests
+
+
+# 27. Admin Contact Messages
+Admin should be able to:
+- respond to the message and it will get to the users’ input email.
+- View contact messages
+- Search messages
+- Mark as read/unread
+- Delete messages
+
+# 29. Mobile-First Design Requirements
+The mobile version must be extremely beautiful and responsive.
+Mobile must not feel like an afterthought.
+Mobile requirements:
+- Sticky mobile header
+- Smooth hamburger menu
+- Clean mobile navigation
+- Readable text, but not oversized
+- Touch-friendly buttons
+- Proper spacing between sections
+- Cards stacked beautifully
+- Swipeable service tabs or accordion
+- No horizontal overflow
+- Fast-loading images
+- Mobile-optimized quote form
+- Clear CTAs after important sections
+- Smooth but lightweight animations
+- Forms must be easy to complete on mobile
+- Blog cards must display beautifully on mobile
+- Admin portal should also be responsive enough for tablet/mobile use
+
+# 31. Performance Requirements
+
+Optimize for:
+- Fast page load
+- Lazy-loaded images
+- Optimized image sizes
+- Minified assets
+- Component-level code splitting
+- Clean CSS
+- Avoid unnecessary heavy animations
+- Lighthouse-friendly performance
+
+Target:
+- Performance: 90+
+- Accessibility: 90+
+- Best Practices: 90+
+- SEO: 95+
+
+
+# 33. Footer Structure
+Footer should include:
+- White/light logo version
+- Short company description
+- Quick links
+- Services links
+- Contact info
+- Newsletter signup
+- Social media placeholders
+- Copyright
+- Privacy Policy
+- Terms & Conditions
+
+Footer should have a premium dark navy/industrial design.
+
+Avoid exaggerated claims unless verifiable.
+
+Do not falsely claim major oil companies as clients unless specifically provided as confirmed clients.
+
+Use careful phrasing such as:
+
+- “industry exposure”
+- “industrial experience”
+- “supporting demanding operational environments”
+- “trusted sourcing approach”
+- “local and global supplier network”
+- “HSE-conscious operations”
+- “procurement and logistics coordination”
+
+---
+
+# 35. Privacy Policy Page
+
+Create a simple professional Privacy Policy page at `/privacy-policy`.
+
+Include:
+
+- Information collected through forms
+- How information is used
+- Quote request data
+- Contact form data
+- Cookies/basic analytics
+- Data protection statement
+- Contact information
+
+# 36. Terms & Conditions Page
+Create a simple professional Terms & Conditions page at `/terms-and-conditions`.
+Include:
+- Website use
+- Service inquiry disclaimer
+- Quote request disclaimer
+- Intellectual property
+- Limitation of liability
+- External links
+- Updates to terms
+- Contact information
+I have attached a beautiful sample design for inspiration of the website feel.
+Remove the subscribe to our newsletter for now.
