@@ -9,6 +9,20 @@ import { logger } from "./lib/logger.js";
 
 const app: Express = express();
 
+// Vercel Serverless Path Correction Middleware
+// Vercel rewrites requests internally, changing req.url to '/api/index'.
+// We restore the original request path from 'x-matched-path' so Express can route correctly.
+app.use((req, res, next) => {
+  const matchedPath = req.headers["x-matched-path"];
+  if (typeof matchedPath === "string" && matchedPath.startsWith("/api")) {
+    const urlObj = new URL(req.url, "http://localhost");
+    const matchedUrlObj = new URL(matchedPath, "http://localhost");
+    matchedUrlObj.search = urlObj.search;
+    req.url = matchedUrlObj.pathname + matchedUrlObj.search;
+  }
+  next();
+});
+
 app.use(
   pinoHttp({
     logger,
