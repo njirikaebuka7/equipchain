@@ -3,20 +3,29 @@ info:
   # Do not change the title, if the title changes, the import paths will be broken
   title: Api
   version: 0.1.0
-  description: API specification
+  description: EquipChain Global Ltd API
 servers:
   - url: /api
     description: Base API path
 tags:
   - name: health
     description: Health operations
+  - name: auth
+    description: Admin authentication
+  - name: blog
+    description: Blog post management
+  - name: contact
+    description: Contact form submissions
+  - name: quotes
+    description: Quote request submissions
+  - name: settings
+    description: Site settings management
 paths:
   /healthz:
     get:
       operationId: healthCheck
       tags: [health]
       summary: Health check
-      description: Returns server health status
       responses:
         "200":
           description: Healthy
@@ -24,13 +33,1029 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/HealthStatus"
+
+  # Auth
+  /auth/login:
+    post:
+      operationId: adminLogin
+      tags: [auth]
+      summary: Admin login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/LoginInput"
+      responses:
+        "200":
+          description: Logged in
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminUser"
+        "401":
+          description: Invalid credentials
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /auth/logout:
+    post:
+      operationId: adminLogout
+      tags: [auth]
+      summary: Admin logout
+      responses:
+        "200":
+          description: Logged out
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+  /auth/me:
+    get:
+      operationId: getAdminMe
+      tags: [auth]
+      summary: Get current admin user
+      responses:
+        "200":
+          description: Current user
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdminUser"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # Blog Posts
+  /blog/posts:
+    get:
+      operationId: listBlogPosts
+      tags: [blog]
+      summary: List published blog posts (public)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 9
+        - name: category
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of blog posts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPostList"
+
+    post:
+      operationId: createBlogPost
+      tags: [blog]
+      summary: Create blog post (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogPostInput"
+      responses:
+        "201":
+          description: Created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /blog/posts/admin:
+    get:
+      operationId: adminListBlogPosts
+      tags: [blog]
+      summary: List all blog posts (admin, includes drafts)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [draft, published, scheduled]
+      responses:
+        "200":
+          description: List of blog posts
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPostList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /blog/posts/{slug}:
+    get:
+      operationId: getBlogPostBySlug
+      tags: [blog]
+      summary: Get a blog post by slug (public)
+      parameters:
+        - name: slug
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Blog post
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /blog/posts/{id}:
+    put:
+      operationId: updateBlogPost
+      tags: [blog]
+      summary: Update blog post (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/BlogPostUpdate"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      operationId: deleteBlogPost
+      tags: [blog]
+      summary: Delete blog post (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /blog/posts/{id}/publish:
+    patch:
+      operationId: toggleBlogPostPublish
+      tags: [blog]
+      summary: Toggle publish status (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PublishToggleInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogPost"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /blog/categories:
+    get:
+      operationId: listBlogCategories
+      tags: [blog]
+      summary: List all blog categories
+      responses:
+        "200":
+          description: Categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+
+  /blog/stats:
+    get:
+      operationId: getBlogStats
+      tags: [blog]
+      summary: Blog statistics (admin dashboard)
+      responses:
+        "200":
+          description: Stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/BlogStats"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # Contact
+  /contact:
+    post:
+      operationId: submitContact
+      tags: [contact]
+      summary: Submit contact form
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ContactInput"
+      responses:
+        "201":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+    get:
+      operationId: listContactSubmissions
+      tags: [contact]
+      summary: List contact submissions (admin)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [unread, read]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of contact submissions
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactSubmissionList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /contact/{id}:
+    get:
+      operationId: getContactSubmission
+      tags: [contact]
+      summary: Get contact submission by ID (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Contact submission
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactSubmission"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      operationId: deleteContactSubmission
+      tags: [contact]
+      summary: Delete contact submission (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /contact/{id}/read:
+    patch:
+      operationId: markContactRead
+      tags: [contact]
+      summary: Mark contact as read/unread (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReadStatusInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ContactSubmission"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # Quote Requests
+  /quotes:
+    post:
+      operationId: submitQuoteRequest
+      tags: [quotes]
+      summary: Submit quote request
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteRequestInput"
+      responses:
+        "201":
+          description: Submitted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+
+    get:
+      operationId: listQuoteRequests
+      tags: [quotes]
+      summary: List quote requests (admin)
+      parameters:
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+        - name: status
+          in: query
+          schema:
+            type: string
+            enum: [new, in_review, responded, closed]
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        "200":
+          description: List of quote requests
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteRequestList"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /quotes/{id}:
+    get:
+      operationId: getQuoteRequest
+      tags: [quotes]
+      summary: Get quote request by ID (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Quote request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteRequest"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+    delete:
+      operationId: deleteQuoteRequest
+      tags: [quotes]
+      summary: Delete quote request (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Deleted
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SuccessResponse"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /quotes/{id}/status:
+    patch:
+      operationId: updateQuoteStatus
+      tags: [quotes]
+      summary: Update quote request status (admin)
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteStatusInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteRequest"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  # Settings
+  /settings:
+    get:
+      operationId: getSiteSettings
+      tags: [settings]
+      summary: Get site settings (public - contact info)
+      responses:
+        "200":
+          description: Site settings
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+
+    put:
+      operationId: updateSiteSettings
+      tags: [settings]
+      summary: Update site settings (admin)
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/SiteSettingsInput"
+      responses:
+        "200":
+          description: Updated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SiteSettings"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
+  /dashboard/stats:
+    get:
+      operationId: getDashboardStats
+      tags: [auth]
+      summary: Get admin dashboard stats
+      responses:
+        "200":
+          description: Dashboard stats
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DashboardStats"
+        "401":
+          description: Unauthorized
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ErrorResponse"
+
 components:
   schemas:
     HealthStatus:
       type: object
+      required: [status]
       properties:
         status:
           type: string
-      required:
-        - status
 
+    ErrorResponse:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+
+    SuccessResponse:
+      type: object
+      required: [message]
+      properties:
+        message:
+          type: string
+
+    AdminUser:
+      type: object
+      required: [id, username]
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+
+    LoginInput:
+      type: object
+      required: [username, password]
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+
+    BlogPost:
+      type: object
+      required: [id, title, slug, status, createdAt, updatedAt]
+      properties:
+        id:
+          type: integer
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: ["string", "null"]
+        tags:
+          type: ["string", "null"]
+        featuredImage:
+          type: ["string", "null"]
+        excerpt:
+          type: ["string", "null"]
+        content:
+          type: ["string", "null"]
+        seoTitle:
+          type: ["string", "null"]
+        seoDescription:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [draft, published, scheduled]
+        author:
+          type: ["string", "null"]
+        publishedAt:
+          type: ["string", "null"]
+        scheduledAt:
+          type: ["string", "null"]
+        createdAt:
+          type: string
+        updatedAt:
+          type: string
+
+    BlogPostList:
+      type: object
+      required: [posts, total, page, limit]
+      properties:
+        posts:
+          type: array
+          items:
+            $ref: "#/components/schemas/BlogPost"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    BlogPostInput:
+      type: object
+      required: [title, slug]
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+        tags:
+          type: string
+        featuredImage:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        seoTitle:
+          type: string
+        seoDescription:
+          type: string
+        status:
+          type: string
+          enum: [draft, published, scheduled]
+        author:
+          type: string
+        scheduledAt:
+          type: string
+
+    BlogPostUpdate:
+      type: object
+      properties:
+        title:
+          type: string
+        slug:
+          type: string
+        category:
+          type: string
+        tags:
+          type: string
+        featuredImage:
+          type: string
+        excerpt:
+          type: string
+        content:
+          type: string
+        seoTitle:
+          type: string
+        seoDescription:
+          type: string
+        status:
+          type: string
+          enum: [draft, published, scheduled]
+        author:
+          type: string
+        scheduledAt:
+          type: string
+
+    PublishToggleInput:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [draft, published, scheduled]
+
+    BlogStats:
+      type: object
+      required: [total, published, drafts, scheduled]
+      properties:
+        total:
+          type: integer
+        published:
+          type: integer
+        drafts:
+          type: integer
+        scheduled:
+          type: integer
+
+    ContactInput:
+      type: object
+      required: [fullName, email, message]
+      properties:
+        fullName:
+          type: string
+        companyName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        inquiryType:
+          type: string
+        message:
+          type: string
+
+    ContactSubmission:
+      type: object
+      required: [id, fullName, email, message, isRead, createdAt]
+      properties:
+        id:
+          type: integer
+        fullName:
+          type: string
+        companyName:
+          type: ["string", "null"]
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        inquiryType:
+          type: ["string", "null"]
+        message:
+          type: string
+        isRead:
+          type: boolean
+        createdAt:
+          type: string
+
+    ContactSubmissionList:
+      type: object
+      required: [submissions, total, page, limit]
+      properties:
+        submissions:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactSubmission"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    ReadStatusInput:
+      type: object
+      required: [isRead]
+      properties:
+        isRead:
+          type: boolean
+
+    QuoteRequestInput:
+      type: object
+      required: [fullName, email, serviceType]
+      properties:
+        fullName:
+          type: string
+        companyName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        serviceType:
+          type: string
+        otherService:
+          type: string
+        productService:
+          type: string
+        quantity:
+          type: string
+        specification:
+          type: string
+        deliveryTimeline:
+          type: string
+        sourcingType:
+          type: string
+        additionalMessage:
+          type: string
+        documentUrl:
+          type: string
+
+    QuoteRequest:
+      type: object
+      required: [id, fullName, email, serviceType, status, createdAt]
+      properties:
+        id:
+          type: integer
+        fullName:
+          type: string
+        companyName:
+          type: ["string", "null"]
+        email:
+          type: string
+        phone:
+          type: ["string", "null"]
+        serviceType:
+          type: string
+        otherService:
+          type: ["string", "null"]
+        productService:
+          type: ["string", "null"]
+        quantity:
+          type: ["string", "null"]
+        specification:
+          type: ["string", "null"]
+        deliveryTimeline:
+          type: ["string", "null"]
+        sourcingType:
+          type: ["string", "null"]
+        additionalMessage:
+          type: ["string", "null"]
+        documentUrl:
+          type: ["string", "null"]
+        status:
+          type: string
+          enum: [new, in_review, responded, closed]
+        createdAt:
+          type: string
+
+    QuoteRequestList:
+      type: object
+      required: [requests, total, page, limit]
+      properties:
+        requests:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuoteRequest"
+        total:
+          type: integer
+        page:
+          type: integer
+        limit:
+          type: integer
+
+    QuoteStatusInput:
+      type: object
+      required: [status]
+      properties:
+        status:
+          type: string
+          enum: [new, in_review, responded, closed]
+
+    SiteSettings:
+      type: object
+      required: [id]
+      properties:
+        id:
+          type: integer
+        phone:
+          type: ["string", "null"]
+        email:
+          type: ["string", "null"]
+        address:
+          type: ["string", "null"]
+        businessHours:
+          type: ["string", "null"]
+        facebookUrl:
+          type: ["string", "null"]
+        twitterUrl:
+          type: ["string", "null"]
+        linkedinUrl:
+          type: ["string", "null"]
+        instagramUrl:
+          type: ["string", "null"]
+
+    SiteSettingsInput:
+      type: object
+      properties:
+        phone:
+          type: string
+        email:
+          type: string
+        address:
+          type: string
+        businessHours:
+          type: string
+        facebookUrl:
+          type: string
+        twitterUrl:
+          type: string
+        linkedinUrl:
+          type: string
+        instagramUrl:
+          type: string
+
+    DashboardStats:
+      type: object
+      required: [totalPosts, publishedPosts, totalContacts, unreadContacts, totalQuotes, newQuotes]
+      properties:
+        totalPosts:
+          type: integer
+        publishedPosts:
+          type: integer
+        totalContacts:
+          type: integer
+        unreadContacts:
+          type: integer
+        totalQuotes:
+          type: integer
+        newQuotes:
+          type: integer
+        recentContacts:
+          type: array
+          items:
+            $ref: "#/components/schemas/ContactSubmission"
+        recentQuotes:
+          type: array
+          items:
+            $ref: "#/components/schemas/QuoteRequest"
