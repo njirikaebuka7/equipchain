@@ -42,6 +42,14 @@ const queryClient = new QueryClient({
   },
 });
 
+function AdminRedirect() {
+  const [, navigate] = useLocation();
+  useEffect(() => {
+    navigate("/admin/login", { replace: true } as any);
+  }, []);
+  return null;
+}
+
 function Router() {
   return (
     <Switch>
@@ -69,6 +77,9 @@ function Router() {
       </Route>
       <Route path="/admin/settings">
         <AdminLayout><SettingsPage /></AdminLayout>
+      </Route>
+      <Route path="/admin">
+        <AdminRedirect />
       </Route>
 
       {/* Public Routes */}

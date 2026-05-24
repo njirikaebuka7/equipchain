@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { MapPin, Phone, Mail, Clock, Send, CheckCircle2 } from "lucide-react";
+import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
 
 const contactSchema = z.object({
   fullName: z.string().min(2, "Full name is required"),
@@ -57,27 +58,36 @@ export function Contact() {
 
   return (
     <div className="w-full">
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0b0d82] to-[#1a1a2e] text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Hero */}
+      <section
+        className="relative pt-32 pb-24 text-white overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0d82]/85 via-[#0b0d82]/80 to-[#1a1a2e]/90 z-0" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Contact Us</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">Get in touch with our team of industrial experts.</p>
         </div>
       </section>
 
+      {/* Form + Info */}
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 max-w-6xl mx-auto">
-            
+
             {/* Contact Form */}
             <div className="bg-card border border-border p-8 md:p-10 rounded-3xl shadow-sm">
               <h2 className="text-3xl font-semibold text-foreground mb-8">Send a Message</h2>
-              
+
               {isSuccess ? (
                 <div className="bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 p-8 rounded-2xl text-center">
                   <CheckCircle2 className="w-16 h-16 text-green-500 mx-auto mb-4" />
                   <h3 className="text-2xl font-bold text-green-700 dark:text-green-400 mb-2">Message Sent Successfully</h3>
                   <p className="text-green-600 dark:text-green-300 mb-6">Thank you for reaching out. Our team will get back to you shortly.</p>
-                  <button onClick={() => setIsSuccess(false)} className="px-6 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 transition-colors">
+                  <button
+                    onClick={() => setIsSuccess(false)}
+                    className="px-6 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors"
+                  >
                     Send Another Message
                   </button>
                 </div>
@@ -180,10 +190,10 @@ export function Contact() {
                       )}
                     />
 
-                    <button 
-                      type="submit" 
+                    <button
+                      type="submit"
                       disabled={submitContact.isPending}
-                      className="w-full inline-flex items-center justify-center rounded-md text-base font-semibold transition-colors focus-visible:outline-none bg-[#f97316] text-white hover:bg-[#f97316]/90 h-14 shadow-lg disabled:opacity-50"
+                      className="w-full inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors focus-visible:outline-none bg-[#f97316] text-white hover:bg-[#ea6500] h-14 shadow-md disabled:opacity-50"
                     >
                       {submitContact.isPending ? "Sending..." : "Send Message"} <Send className="ml-2 w-5 h-5" />
                     </button>
@@ -193,10 +203,10 @@ export function Contact() {
             </div>
 
             {/* Contact Info */}
-            <div className="space-y-8">
+            <div>
               <div className="bg-[#0b0d82] text-white p-10 rounded-3xl shadow-xl">
                 <h3 className="text-2xl font-semibold mb-8">Contact Information</h3>
-                
+
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center shrink-0">
@@ -204,7 +214,7 @@ export function Contact() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-1">Office Address</h4>
-                      <p className="text-white/80">{settings?.address || "Aziom Plaza Opp. Old Nitel Exchange, Tabon-Tabon, Agege, Lagos State, Nigeria, West-Africa."}</p>
+                      <p className="text-white/75">{settings?.address || "Aziom Plaza Opp. Old Nitel Exchange, Tabon-Tabon, Agege, Lagos State, Nigeria, West-Africa."}</p>
                     </div>
                   </div>
 
@@ -214,7 +224,9 @@ export function Contact() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-1">Email Address</h4>
-                      <p className="text-white/80">{settings?.email || "yolatoye@equipchainglobal.com"}</p>
+                      <a href={`mailto:${settings?.email || "yolatoye@equipchainglobal.com"}`} className="text-white/75 hover:text-white transition-colors">
+                        {settings?.email || "yolatoye@equipchainglobal.com"}
+                      </a>
                     </div>
                   </div>
 
@@ -224,7 +236,9 @@ export function Contact() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-1">Phone Number</h4>
-                      <p className="text-white/80">{settings?.phone || "+2348072072332"}</p>
+                      <a href={`tel:${settings?.phone || "+2348072072332"}`} className="text-white/75 hover:text-white transition-colors">
+                        {settings?.phone || "+2348072072332"}
+                      </a>
                     </div>
                   </div>
 
@@ -234,28 +248,29 @@ export function Contact() {
                     </div>
                     <div>
                       <h4 className="font-semibold text-lg mb-1">Business Hours</h4>
-                      <p className="text-white/80">{settings?.businessHours || "Mon - Fri: 8:00 AM - 5:00 PM"}</p>
+                      <p className="text-white/75">{settings?.businessHours || "Mon - Fri: 8:00 AM - 5:00 PM"}</p>
                     </div>
                   </div>
                 </div>
-              </div>
-
-              <div className="rounded-3xl overflow-hidden border border-border h-64 bg-secondary">
-                <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1m3!1d3963.298135876342!2d3.3243162758197775!3d3.3243162758197775!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b91a3297a7d41%3A0xc6829bf8b5a037b5!2sAgege%2C%20Ikeja!5e0!3m2!1sen!2sng!4v1700000000000!5m2!1sen!2sng" 
-                  width="100%" 
-                  height="100%" 
-                  style={{ border: 0 }} 
-                  allowFullScreen 
-                  loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
-                  title="Google Maps"
-                ></iframe>
               </div>
             </div>
 
           </div>
         </div>
+      </section>
+
+      {/* Full-Width Google Map */}
+      <section className="h-[450px] w-full">
+        <iframe
+          src="https://maps.google.com/maps?q=Agege+Lagos+Nigeria&output=embed&z=15"
+          width="100%"
+          height="100%"
+          style={{ border: 0, display: "block" }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="EquipChain Global Ltd — Agege, Lagos"
+        />
       </section>
     </div>
   );

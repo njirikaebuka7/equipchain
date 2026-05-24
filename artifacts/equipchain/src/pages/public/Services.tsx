@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "wouter";
-import { Shield, Truck, Settings, HardHat, Wrench, ChevronRight } from "lucide-react";
+import { Shield, Truck, Settings, HardHat, Wrench, ChevronRight, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
 
 export function Services() {
   useEffect(() => {
@@ -11,10 +12,13 @@ export function Services() {
 
   const [activeTab, setActiveTab] = useState(0);
 
+  const base = import.meta.env.BASE_URL;
+
   const services = [
     {
       title: "Procurement & Supply",
       icon: Shield,
+      image: `${base}service-images/procurement.png`,
       desc: "Reliable sourcing of industrial materials and technical equipment to keep your operations running smoothly.",
       points: [
         "Industrial materials sourcing",
@@ -28,6 +32,7 @@ export function Services() {
     {
       title: "Supply Chain & Logistics",
       icon: Truck,
+      image: `${base}service-images/logistics.png`,
       desc: "End-to-end logistics and inventory coordination ensuring materials arrive when and where they are needed.",
       points: [
         "Materials coordination",
@@ -41,6 +46,7 @@ export function Services() {
     {
       title: "Oil & Gas Support",
       icon: Settings,
+      image: `${base}service-images/oil-gas.png`,
       desc: "Specialized operational and technical support tailored for the demanding oil and gas sector.",
       points: [
         "Operational support services",
@@ -54,6 +60,7 @@ export function Services() {
     {
       title: "Project Support",
       icon: HardHat,
+      image: `${base}service-images/project-support.png`,
       desc: "Comprehensive project coordination and site administration to facilitate successful execution.",
       points: [
         "Project coordination support",
@@ -67,6 +74,7 @@ export function Services() {
     {
       title: "Industrial Services",
       icon: Wrench,
+      image: `${base}service-images/industrial.png`,
       desc: "General contracting and facility support services for continuous business operations.",
       points: [
         "Industrial supplies",
@@ -80,71 +88,120 @@ export function Services() {
 
   return (
     <div className="w-full">
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0b0d82] to-[#1a1a2e] text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Hero Section */}
+      <section
+        className="relative pt-32 pb-24 text-white overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0d82]/85 via-[#0b0d82]/80 to-[#1a1a2e]/90 z-0" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Our Services</h1>
-          <p className="text-xl text-white/80 max-w-2xl mx-auto">Comprehensive procurement, logistics, and industrial support solutions.</p>
+          <p className="text-xl text-white/80 max-w-2xl mx-auto">Comprehensive industrial solutions designed to keep operations running efficiently.</p>
         </div>
       </section>
 
-      <section className="py-24 bg-background min-h-[600px]">
+      {/* Service Tabs */}
+      <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row gap-12 max-w-6xl mx-auto">
-            
-            {/* Tabs List */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-2">
-              {services.map((service, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => setActiveTab(idx)}
-                  className={`flex items-center gap-4 p-5 rounded-xl text-left transition-all ${
-                    activeTab === idx 
-                      ? "bg-[#0b0d82] text-white shadow-lg" 
-                      : "bg-secondary text-foreground hover:bg-secondary/80"
-                  }`}
-                >
-                  <service.icon className={`w-6 h-6 ${activeTab === idx ? "text-[#f97316]" : "text-[#0b0d82]"}`} />
-                  <span className="font-semibold text-lg">{service.title}</span>
-                </button>
-              ))}
-            </div>
 
-            {/* Tab Content */}
-            <div className="w-full lg:w-2/3">
-              <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.3 }}
-                  className="bg-card border border-border p-10 rounded-3xl shadow-sm"
-                >
-                  <div className="w-16 h-16 rounded-xl bg-secondary flex items-center justify-center mb-8">
-                    {React.createElement(services[activeTab].icon, { className: "w-8 h-8 text-[#f97316]" })}
+          {/* Tab Navigation */}
+          <div className="flex flex-wrap gap-3 justify-center mb-16">
+            {services.map((s, i) => (
+              <button
+                key={i}
+                onClick={() => setActiveTab(i)}
+                className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-semibold transition-all duration-200 ${
+                  activeTab === i
+                    ? "bg-[#0b0d82] text-white shadow-md"
+                    : "bg-secondary text-foreground hover:bg-secondary/70"
+                }`}
+              >
+                <s.icon className="w-4 h-4" />
+                {s.title}
+              </button>
+            ))}
+          </div>
+
+          {/* Tab Content */}
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start max-w-6xl mx-auto"
+            >
+              {/* Left — Text Content */}
+              <div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-14 h-14 rounded-xl bg-[#0b0d82]/10 flex items-center justify-center">
+                    {React.createElement(services[activeTab].icon, { className: "w-7 h-7 text-[#0b0d82]" })}
                   </div>
-                  <h2 className="text-3xl font-semibold text-foreground mb-4">{services[activeTab].title}</h2>
-                  <p className="text-lg text-muted-foreground mb-8 pb-8 border-b border-border">
-                    {services[activeTab].desc}
-                  </p>
-                  
-                  <h3 className="font-semibold text-lg mb-4 text-foreground">Key Capabilities:</h3>
-                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
-                    {services[activeTab].points.map((point, i) => (
-                      <li key={i} className="flex items-start gap-3 text-muted-foreground">
-                        <ChevronRight className="w-5 h-5 text-[#f97316] shrink-0 mt-0.5" />
-                        <span>{point}</span>
-                      </li>
-                    ))}
-                  </ul>
+                  <h2 className="text-3xl font-display font-bold text-foreground">{services[activeTab].title}</h2>
+                </div>
 
-                  <Link href="/request-quote" className="inline-flex items-center justify-center rounded-md text-base font-semibold transition-colors focus-visible:outline-none bg-[#0b0d82] text-white hover:bg-[#0b0d82]/90 h-12 px-8">
-                    Request a Quote
-                  </Link>
-                </motion.div>
-              </AnimatePresence>
-            </div>
+                <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+                  {services[activeTab].desc}
+                </p>
 
+                <ul className="space-y-3 mb-10">
+                  {services[activeTab].points.map((pt, j) => (
+                    <li key={j} className="flex items-start gap-3 text-foreground">
+                      <CheckCircle2 className="w-5 h-5 text-[#f97316] shrink-0 mt-0.5" />
+                      <span>{pt}</span>
+                    </li>
+                  ))}
+                </ul>
+
+                <Link
+                  href={`/request-quote?service=${encodeURIComponent(services[activeTab].title)}`}
+                  className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-12 px-8 shadow-md"
+                >
+                  Request a Quote <ChevronRight className="ml-2 w-5 h-5" />
+                </Link>
+              </div>
+
+              {/* Right — Service Image */}
+              <div className="relative rounded-2xl overflow-hidden shadow-lg aspect-[16/10] bg-secondary">
+                <img
+                  src={services[activeTab].image}
+                  alt={services[activeTab].title}
+                  className="w-full h-full object-cover"
+                  onError={(e) => { e.currentTarget.style.opacity = "0"; }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0b0d82]/40 to-transparent pointer-events-none" />
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section
+        className="py-24 text-center px-4 relative overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b0d82]/90 to-[#1a1a2e]/90 z-0" />
+        <div className="relative z-10">
+          <h2 className="text-4xl font-display font-bold text-white mb-6">Need a Custom Solution?</h2>
+          <p className="text-xl text-white/75 mb-10 max-w-2xl mx-auto">
+            Our team of procurement and supply chain specialists is ready to discuss your specific requirements.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/request-quote"
+              className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-14 px-10 shadow-lg"
+            >
+              Request a Quote
+            </Link>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-white/10 text-white hover:bg-white/20 border border-white/20 h-14 px-10"
+            >
+              Contact Us
+            </Link>
           </div>
         </div>
       </section>

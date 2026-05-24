@@ -64,12 +64,12 @@ export function BlogPost() {
         )}
         
         <div className="container mx-auto px-4 relative z-20 pb-16 max-w-4xl">
-          <Link href="/insights" className="inline-flex items-center text-white/70 hover:text-white mb-8 transition-colors text-sm font-medium">
+          <Link href="/insights" className="inline-flex items-center text-white/70 hover:text-white transition-colors text-sm font-medium mb-10 block">
             <ArrowLeft className="w-4 h-4 mr-2" /> Back to Insights
           </Link>
-          
+
           {post.category && (
-            <div className="inline-block px-4 py-1.5 bg-[#f97316] text-white text-sm font-bold uppercase tracking-wider rounded-md mb-6">
+            <div className="inline-block px-4 py-1.5 bg-[#f97316] text-white text-sm font-bold uppercase tracking-wider rounded-full mb-6">
               {post.category}
             </div>
           )}

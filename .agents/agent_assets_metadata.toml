@@ -1,0 +1,38 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "edhg5GDWI0zT8UoOQBlp4"
+uri = "file://artifacts/equipchain/public/service-images/procurement.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "hf0_3JVM6f0vXsDNpgajY"
+uri = "file://artifacts/equipchain/public/service-images/logistics.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "oQuHQbWVcqQipot7Rka1_"
+uri = "file://artifacts/equipchain/public/service-images/oil-gas.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "B5V8z5uK7PSHQ4nt1Ek1d"
+uri = "file://artifacts/equipchain/public/service-images/project-support.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "AhzVDQbpnSeVyc6cadnHp"
+uri = "file://artifacts/equipchain/public/service-images/industrial.png"
+type = "image"
+title = "generated_image"
+
+[[generated]]
+id = "E7J2Usf-wiJV3CwwGxqUh"
+uri = "file://artifacts/equipchain/public/hse-commitment.png"
+type = "image"
+title = "generated_image"

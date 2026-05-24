@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { Link } from "wouter";
 import { CheckCircle2, ShieldCheck, Download } from "lucide-react";
 import { motion } from "framer-motion";
+import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
 
 export function Capabilities() {
   useEffect(() => {
@@ -52,10 +53,24 @@ export function Capabilities() {
     }
   ];
 
+  const exposures = [
+    { name: "Chevron Nigeria", role: "Procurement & Logistics Support" },
+    { name: "ExxonMobil", role: "Industrial Materials Coordination" },
+    { name: "Dangote Group", role: "Supply Chain Administration" },
+    { name: "NNPC Operations", role: "Project Coordination Support" },
+    { name: "Total Energies", role: "Operational Procurement" },
+    { name: "Siemens Energy", role: "Technical Supply Coordination" }
+  ];
+
   return (
     <div className="w-full">
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0b0d82] to-[#1a1a2e] text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Hero */}
+      <section
+        className="relative pt-32 pb-24 text-white overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0d82]/85 via-[#0b0d82]/80 to-[#1a1a2e]/90 z-0" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Our Capabilities</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">Practical industry exposure and execution excellence.</p>
         </div>
@@ -65,12 +80,17 @@ export function Capabilities() {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-1 bg-[#f97316]"></div>
+              <h2 className="text-[#0b0d82] font-semibold tracking-wider uppercase text-sm">What We Do</h2>
+              <div className="w-8 h-1 bg-[#f97316]"></div>
+            </div>
             <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground">Core Capabilities</h2>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {coreCapabilities.map((cap, i) => (
               <div key={i} className="bg-card border border-border p-8 rounded-2xl shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="text-2xl font-semibold text-[#0b0d82] mb-6 pb-4 border-b border-border">{cap.title}</h3>
+                <h3 className="text-xl font-semibold text-[#0b0d82] mb-6 pb-4 border-b border-border">{cap.title}</h3>
                 <ul className="space-y-3">
                   {cap.points.map((pt, j) => (
                     <li key={j} className="flex items-start gap-3 text-muted-foreground">
@@ -86,63 +106,62 @@ export function Capabilities() {
       </section>
 
       {/* Industry Exposure */}
-      <section className="py-24 bg-secondary">
+      <section className="py-24 bg-secondary/50">
         <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-8">Industry Experience</h2>
-            <p className="text-lg text-muted-foreground mb-12">
-              Management and operational exposure includes participation in activities linked to major operational environments:
+          <div className="text-center mb-16">
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <div className="w-8 h-1 bg-[#f97316]"></div>
+              <h2 className="text-[#0b0d82] font-semibold tracking-wider uppercase text-sm">Operational Exposure</h2>
+              <div className="w-8 h-1 bg-[#f97316]"></div>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-4">Industry Exposure</h2>
+            <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+              Our management team brings practical understanding from major industrial environments.
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-              {["Chevron Corporation", "ExxonMobil", "Dangote Group"].map((brand, i) => (
-                <div key={i} className="bg-white p-8 rounded-xl shadow-sm border border-border flex items-center justify-center h-32">
-                  <span className="font-semibold text-2xl text-foreground/80">{brand}</span>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            {exposures.map((exp, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.07, duration: 0.4 }}
+                className="bg-card border border-border rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="w-10 h-10 rounded-lg bg-[#0b0d82]/10 flex items-center justify-center mb-4">
+                  <ShieldCheck className="w-5 h-5 text-[#0b0d82]" />
                 </div>
-              ))}
-            </div>
-            
-            <div className="bg-[#0b0d82] text-white p-10 rounded-2xl text-left">
-              <h3 className="text-xl font-semibold mb-6">Our team brings practical understanding of:</h3>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {["Procurement systems", "Operational coordination", "Industrial support processes", "Logistics administration", "Vendor engagement practices", "Project support requirements"].map((pt, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <div className="w-2 h-2 rounded-full bg-[#f97316]" />
-                    <span className="text-white/90">{pt}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+                <h4 className="font-semibold text-foreground mb-1">{exp.name}</h4>
+                <p className="text-muted-foreground text-sm">{exp.role}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Competitive Advantage */}
-      <section className="py-24 bg-background">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-display font-bold text-foreground mb-12">What Distinguishes Us</h2>
-          <div className="flex flex-wrap justify-center gap-4 max-w-4xl mx-auto mb-16">
-            {[
-              "Experienced management background",
-              "Strong local market understanding",
-              "Flexible operational structure",
-              "Fast response capability",
-              "Relationship-driven service approach",
-              "Commitment to professionalism",
-              "Client-focused execution model"
-            ].map((adv, i) => (
-              <span key={i} className="bg-secondary text-foreground px-6 py-3 rounded-full font-medium border border-border">
-                {adv}
-              </span>
-            ))}
-          </div>
-
-          <div className="inline-block p-8 border border-border rounded-2xl bg-card">
-            <h3 className="text-2xl font-bold mb-4">Download Capability Statement</h3>
-            <p className="text-muted-foreground mb-6">Get a comprehensive overview of our services and experience.</p>
-            <button className="inline-flex items-center justify-center rounded-md text-base font-semibold transition-colors focus-visible:outline-none bg-[#f97316] text-white hover:bg-[#f97316]/90 h-12 px-8">
-              <Download className="mr-2 w-5 h-5" /> Download PDF
-            </button>
+      {/* Capability Statement CTA */}
+      <section
+        className="py-24 text-center px-4 relative overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-br from-[#0b0d82]/90 to-[#1a1a2e]/90 z-0" />
+        <div className="relative z-10">
+          <h2 className="text-4xl font-display font-bold text-white mb-6">Download Our Capability Statement</h2>
+          <p className="text-xl text-white/75 mb-10 max-w-2xl mx-auto">A concise overview of our services, core competencies, and industry experience.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-14 px-10 shadow-lg"
+            >
+              <Download className="mr-2 w-5 h-5" /> Request Capability Document
+            </Link>
+            <Link
+              href="/request-quote"
+              className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-white/10 text-white hover:bg-white/20 border border-white/20 h-14 px-10"
+            >
+              Request a Quote
+            </Link>
           </div>
         </div>
       </section>

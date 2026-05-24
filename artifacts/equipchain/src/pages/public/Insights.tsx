@@ -4,6 +4,7 @@ import { format } from "date-fns";
 import { useListBlogPosts } from "@workspace/api-client-react";
 import { ArrowRight, Calendar, User } from "lucide-react";
 import { Skeleton } from "@/components/ui/skeleton";
+import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
 
 export function Insights() {
   useEffect(() => {
@@ -15,8 +16,13 @@ export function Insights() {
 
   return (
     <div className="w-full bg-background min-h-screen">
-      <section className="relative pt-32 pb-20 bg-gradient-to-b from-[#0b0d82] to-[#1a1a2e] text-white">
-        <div className="container mx-auto px-4 text-center">
+      {/* Hero */}
+      <section
+        className="relative pt-32 pb-24 text-white overflow-hidden"
+        style={{ backgroundImage: `url(${heroImg})`, backgroundSize: "cover", backgroundPosition: "center" }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0b0d82]/85 via-[#0b0d82]/80 to-[#1a1a2e]/90 z-0" />
+        <div className="container mx-auto px-4 relative z-10 text-center">
           <h1 className="text-5xl md:text-6xl font-display font-bold mb-6">Insights & Industry News</h1>
           <p className="text-xl text-white/80 max-w-2xl mx-auto">Latest updates, technical insights, and company news.</p>
         </div>
@@ -24,8 +30,8 @@ export function Insights() {
 
       <section className="py-24">
         <div className="container mx-auto px-4">
-          
-          <div className="flex gap-4 mb-12 overflow-x-auto pb-4 scrollbar-hide">
+
+          <div className="flex gap-3 mb-12 overflow-x-auto pb-4 scrollbar-hide">
             {["All", "Procurement", "Supply Chain", "HSE", "Industry Insights"].map((tab, i) => (
               <button key={i} className={`whitespace-nowrap px-6 py-2 rounded-full font-medium transition-colors ${i === 0 ? "bg-[#0b0d82] text-white" : "bg-secondary text-foreground hover:bg-secondary/80"}`}>
                 {tab}
@@ -58,31 +64,31 @@ export function Insights() {
                 <article key={post.id} className="group bg-card rounded-3xl overflow-hidden border border-border shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full">
                   <div className="relative h-64 overflow-hidden bg-secondary">
                     {post.featuredImage ? (
-                      <img 
-                        src={post.featuredImage} 
-                        alt={post.title} 
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
+                      <img
+                        src={post.featuredImage}
+                        alt={post.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                         loading="lazy"
                       />
                     ) : (
                       <div className="w-full h-full bg-gradient-to-br from-[#0b0d82]/20 to-[#1a1a2e]/20" />
                     )}
                     {post.category && (
-                      <div className="absolute top-4 left-4 px-3 py-1 bg-[#f97316] text-white text-xs font-bold uppercase tracking-wider rounded-md">
+                      <div className="absolute top-4 left-4 px-3 py-1 bg-[#f97316] text-white text-xs font-bold uppercase tracking-wider rounded-full">
                         {post.category}
                       </div>
                     )}
                   </div>
-                  
+
                   <div className="p-8 flex flex-col flex-1">
-                    <h2 className="text-2xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
+                    <h2 className="text-xl font-semibold text-foreground mb-4 line-clamp-2 group-hover:text-[#0b0d82] transition-colors">
                       <Link href={`/insights/${post.slug}`}>{post.title}</Link>
                     </h2>
-                    
-                    <p className="text-muted-foreground mb-6 line-clamp-3 flex-1">
+
+                    <p className="text-muted-foreground mb-6 line-clamp-3 flex-1 text-sm">
                       {post.excerpt || post.content?.replace(/<[^>]*>?/gm, '').substring(0, 150) + "..."}
                     </p>
-                    
+
                     <div className="flex items-center justify-between pt-6 border-t border-border mt-auto">
                       <div className="flex flex-col text-xs text-muted-foreground gap-1">
                         <span className="flex items-center gap-1.5"><Calendar className="w-3.5 h-3.5" /> {post.publishedAt ? format(new Date(post.publishedAt), 'MMM dd, yyyy') : ''}</span>
