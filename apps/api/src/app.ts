@@ -6,6 +6,7 @@ import session from "express-session";
 import connectPgSimple from "connect-pg-simple";
 import router from "./routes/index.js";
 import { logger } from "./lib/logger.js";
+import { pool } from "@workspace/db";
 
 const app: Express = express();
 
@@ -80,7 +81,7 @@ if (!sessionSecret && process.env.NODE_ENV === "production") {
 const resolvedSessionSecret = sessionSecret || "equipchain-dev-secret-not-for-production";
 
 const sessionStore = new PgStore({
-  conString: process.env.DATABASE_URL,
+  pool: pool,
   tableName: "session",
   createTableIfMissing: true, // auto-creates table if not present
   ttl: 7 * 24 * 60 * 60, // 7 days in seconds
