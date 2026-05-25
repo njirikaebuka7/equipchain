@@ -6,7 +6,7 @@ import {
   Building2, Droplets, Zap, Factory, CheckCircle2
 } from "lucide-react";
 import { useListBlogPosts } from "@workspace/api-client-react";
-import heroImg from "@assets/equipchain_global_ltd_hero_background_1779629274989.png";
+const heroImg = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80";
 import aboutImg from "@assets/generated_images/nigerian_industrial_procurement_team_1145.png";
 
 export function Home() {
@@ -45,7 +45,7 @@ export function Home() {
           minHeight: "100vh"
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-[#0b0d82]/88 via-[#0b0d82]/75 to-[#1a1a2e]/85 z-0" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a2e] via-[#1a1a2e]/80 to-transparent z-0" />
 
         <div className="relative z-10 container mx-auto px-4 py-20 text-center flex flex-col items-center">
           <motion.h1
