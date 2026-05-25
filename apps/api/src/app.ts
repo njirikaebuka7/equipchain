@@ -10,6 +10,9 @@ import { pool } from "@workspace/db";
 
 const app: Express = express();
 
+// Trust Vercel's Edge proxy (SSL termination) to enable secure cookies
+app.set("trust proxy", 1);
+
 // Vercel Serverless Path Correction Middleware
 // Vercel rewrites requests internally, changing req.url to '/api/index'.
 // We restore the original request path from 'x-matched-path' so Express can route correctly.
