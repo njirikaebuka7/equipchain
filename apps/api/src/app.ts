@@ -55,12 +55,39 @@ const allowedOrigins = [
   process.env.FRONTEND_URL,
 ].filter(Boolean) as string[];
 
+const isAllowedOrigin = (origin: string): boolean => {
+  if (allowedOrigins.includes(origin)) return true;
+  if (process.env.NODE_ENV !== "production") return true;
+
+  // Check for localhost
+  if (origin.startsWith("http://localhost:") || origin.startsWith("https://localhost:")) {
+    return true;
+  }
+
+  try {
+    const url = new URL(origin);
+    const hostname = url.hostname;
+    // Allow the main custom domain and its subdomains
+    if (hostname === "equipchainglobal.com" || hostname.endsWith(".equipchainglobal.com")) {
+      return true;
+    }
+    // Allow vercel.app domains (including preview/branch deployments)
+    if (hostname === "equipchain.vercel.app" || hostname.endsWith(".vercel.app")) {
+      return true;
+    }
+  } catch (err) {
+    // Ignore invalid URLs
+  }
+
+  return false;
+};
+
 app.use(
   cors({
     origin: (origin, callback) => {
       // Allow requests with no origin (e.g. curl, server-to-server)
       if (!origin) return callback(null, true);
-      if (allowedOrigins.includes(origin) || process.env.NODE_ENV !== "production") {
+      if (isAllowedOrigin(origin)) {
         return callback(null, true);
       }
       callback(new Error(`CORS: origin ${origin} not allowed`));
