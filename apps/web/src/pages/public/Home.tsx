@@ -9,6 +9,11 @@ import { useListBlogPosts } from "@workspace/api-client-react";
 const heroImg = "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&q=80";
 import aboutImg from "@assets/generated_images/nigerian_industrial_procurement_team_1145.png";
 
+import trackedExcavatorImg from "@assets/generated_images/prod_tracked_excavator_1780085691301.png";
+import backhoeLoaderImg from "@assets/generated_images/prod_backhoe_loader_1780085712600.png";
+import wheelLoaderImg from "@assets/generated_images/prod_wheel_loader_1780085734962.png";
+import telehandlerImg from "@assets/generated_images/prod_telehandler_1780085754494.png";
+
 export function Home() {
   useEffect(() => {
     document.title = "EquipChain Global Ltd | Industrial Procurement & Supply Chain";
@@ -132,6 +137,47 @@ export function Home() {
                 <p className="text-lg font-medium text-white">Years of Industrial Excellence</p>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* OUR PRODUCTS PREVIEW */}
+      <section className="py-24 bg-[#080a1a] text-white">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-1 bg-[#f97316]"></div>
+                <h2 className="text-white/70 font-semibold tracking-wider uppercase text-sm">Our Products</h2>
+                <div className="w-8 h-1 bg-[#f97316]"></div>
+              </div>
+              <h3 className="text-4xl md:text-5xl font-display font-bold text-white">Machinery & Attachments</h3>
+            </div>
+            <Link href="/products" className="inline-flex items-center justify-center rounded-full text-base font-semibold transition-colors bg-[#f97316] text-white hover:bg-[#ea6500] h-12 px-8 shrink-0">
+              View All Products
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {[
+              { name: "Heavy-Duty Tracked Excavator", img: trackedExcavatorImg },
+              { name: "Versatile Backhoe Loader", img: backhoeLoaderImg },
+              { name: "Compact Wheel Loader", img: wheelLoaderImg },
+              { name: "Telescopic Handler", img: telehandlerImg },
+            ].map((prod, i) => (
+              <div key={i} className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-md hover:bg-white/10 transition-all duration-300">
+                <div className="aspect-[4/3] overflow-hidden">
+                  <img src={prod.img} alt={prod.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                </div>
+                <div className="absolute bottom-0 left-0 p-6 w-full">
+                  <h4 className="text-xl font-semibold text-white mb-2">{prod.name}</h4>
+                  <span className="text-[#f97316] text-sm font-medium inline-flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    View Details <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>

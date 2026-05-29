@@ -20,7 +20,8 @@ import {
   Contact,
   RequestQuote,
   Insights,
-  BlogPost
+  BlogPost,
+  Products
 } from "@/pages/public";
 
 import {
@@ -88,6 +89,9 @@ function Router() {
       </Route>
       <Route path="/about">
         <PublicLayout><About /></PublicLayout>
+      </Route>
+      <Route path="/products">
+        <PublicLayout><Products /></PublicLayout>
       </Route>
       <Route path="/services">
         <PublicLayout><Services /></PublicLayout>

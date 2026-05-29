@@ -42,6 +42,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
             <nav className="hidden lg:flex items-center gap-8">
               <Link href="/" className={navLinkClass(location === "/")}>Home</Link>
               <Link href="/about" className={navLinkClass(location === "/about")}>About Us</Link>
+              <Link href="/products" className={navLinkClass(location === "/products")}>Products</Link>
 
               <div className="relative group">
                 <button className={dropdownTriggerClass(location.startsWith("/services") || location.startsWith("/industries") || location.startsWith("/capabilities"))}>
@@ -87,6 +88,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
             <div className="px-4 pt-2 pb-6 space-y-1">
               <Link onClick={closeMenu} href="/" className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-secondary">Home</Link>
               <Link onClick={closeMenu} href="/about" className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-secondary">About Us</Link>
+              <Link onClick={closeMenu} href="/products" className="block px-3 py-3 rounded-md text-base font-medium text-foreground hover:text-primary hover:bg-secondary">Products</Link>
               <div className="px-3 py-2">
                 <p className="text-sm font-semibold text-muted-foreground uppercase tracking-wider mb-2">Services</p>
                 <div className="space-y-1 pl-3 border-l-2 border-primary/20">
@@ -135,7 +137,7 @@ export function PublicLayout({ children }: { children: React.ReactNode }) {
                 <span className="w-2 h-2 rounded-full bg-[#f97316]"></span> Quick Links
               </h3>
               <ul className="space-y-3">
-                {[["Home", "/"], ["About Us", "/about"], ["Services", "/services"], ["Industries", "/industries"], ["Capabilities", "/capabilities"], ["HSE", "/hse"]].map(([label, href]) => (
+                {[["Home", "/"], ["About Us", "/about"], ["Products", "/products"], ["Services", "/services"], ["Industries", "/industries"], ["Capabilities", "/capabilities"], ["HSE", "/hse"]].map(([label, href]) => (
                   <li key={href}><Link href={href} className="text-white/65 hover:text-[#f97316] transition-colors text-sm">{label}</Link></li>
                 ))}
               </ul>

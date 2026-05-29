@@ -10,3 +10,4 @@ export * from "./Contact";
 export * from "./RequestQuote";
 export * from "./Insights";
 export * from "./BlogPost";
+export * from "./Products";
