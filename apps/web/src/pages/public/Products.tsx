@@ -2,72 +2,13 @@ import React, { useEffect } from "react";
 import { Link } from "wouter";
 import { motion } from "framer-motion";
 import { ArrowRight, ArrowLeft } from "lucide-react";
-
-import trackedExcavatorImg from "@assets/generated_images/prod_tracked_excavator_1780085691301.png";
-import backhoeLoaderImg from "@assets/generated_images/prod_backhoe_loader_1780085712600.png";
-import wheelLoaderImg from "@assets/generated_images/prod_wheel_loader_1780085734962.png";
-import telehandlerImg from "@assets/generated_images/prod_telehandler_1780085754494.png";
-import skidSteerImg from "@assets/generated_images/prod_skid_steer_1780085776493.png";
-import breakerImg from "@assets/generated_images/prod_hydraulic_breaker_1780085795230.png";
-import bucketImg from "@assets/generated_images/prod_digging_bucket_1780085811555.png";
-import sweeperImg from "@assets/generated_images/prod_sweeper_1780085828793.png";
+import { productsData } from "@/lib/products";
 
 export function Products() {
   useEffect(() => {
     document.title = "Our Products | EquipChain Global Ltd";
     window.scrollTo(0, 0);
   }, []);
-
-  const products = [
-    {
-      id: 1,
-      name: "Heavy-Duty Tracked Excavator",
-      image: trackedExcavatorImg,
-      description: "A robust tracked excavator built to handle the toughest digging and earthmoving tasks with maximum efficiency and operator comfort."
-    },
-    {
-      id: 2,
-      name: "Versatile Backhoe Loader",
-      image: backhoeLoaderImg,
-      description: "An essential machine combining loader and backhoe capabilities, offering versatile performance for construction, trenching, and material handling."
-    },
-    {
-      id: 3,
-      name: "Compact Wheel Loader",
-      image: wheelLoaderImg,
-      description: "Highly maneuverable wheel loader designed for fast material movement in tight spaces, without compromising on power or lift capacity."
-    },
-    {
-      id: 4,
-      name: "Telescopic Handler",
-      image: telehandlerImg,
-      description: "Reach higher and lift heavier with this versatile telehandler. Perfect for agricultural, construction, and industrial material placement."
-    },
-    {
-      id: 5,
-      name: "Skid Steer Loader",
-      image: skidSteerImg,
-      description: "Agile, powerful, and easy to operate skid steer loader built to navigate narrow work sites while delivering high breakout force."
-    },
-    {
-      id: 6,
-      name: "Hydraulic Breaker Attachment",
-      image: breakerImg,
-      description: "A heavy-duty hydraulic breaker attachment designed to power through rock, concrete, and tough demolition projects with ease."
-    },
-    {
-      id: 7,
-      name: "Heavy-Duty Digging Bucket",
-      image: bucketImg,
-      description: "A durable steel digging bucket with reinforced teeth, engineered for maximum penetration and capacity in hard soil and rock."
-    },
-    {
-      id: 8,
-      name: "Industrial Sweeper Attachment",
-      image: sweeperImg,
-      description: "Keep the worksite clean and safe with a high-capacity sweeper attachment, perfect for roads, industrial yards, and large facilities."
-    }
-  ];
 
   return (
     <div className="w-full">
@@ -101,7 +42,7 @@ export function Products() {
       <section className="py-24 bg-background">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {products.map((product, i) => (
+            {productsData.map((product, i) => (
               <motion.div
                 key={product.id}
                 initial={{ opacity: 0, y: 20 }}
@@ -126,9 +67,9 @@ export function Products() {
                     {product.description}
                   </p>
                   <div className="mt-auto pt-4 border-t border-border">
-                    <button className="inline-flex items-center text-sm font-semibold text-[#f97316] hover:text-[#ea6500] transition-colors">
-                      Request Details <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    <Link href={`/products/${product.id}`} className="inline-flex items-center text-sm font-semibold text-[#f97316] hover:text-[#ea6500] transition-colors">
+                      View Details <ArrowRight className="ml-1.5 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </div>
               </motion.div>

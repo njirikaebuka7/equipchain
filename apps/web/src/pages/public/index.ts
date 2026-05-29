@@ -6,6 +6,8 @@ export * from "./Capabilities";
 export * from "./HSE";
 export * from "./PrivacyPolicy";
 export * from "./TermsConditions";
+export * from "./Products";
+export * from "./ProductSingle";
 export * from "./Contact";
 export * from "./RequestQuote";
 export * from "./Insights";

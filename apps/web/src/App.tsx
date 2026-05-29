@@ -21,7 +21,8 @@ import {
   RequestQuote,
   Insights,
   BlogPost,
-  Products
+  Products,
+  ProductSingle
 } from "@/pages/public";
 
 import {
@@ -92,6 +93,9 @@ function Router() {
       </Route>
       <Route path="/products">
         <PublicLayout><Products /></PublicLayout>
+      </Route>
+      <Route path="/products/:id">
+        <PublicLayout><ProductSingle /></PublicLayout>
       </Route>
       <Route path="/services">
         <PublicLayout><Services /></PublicLayout>
