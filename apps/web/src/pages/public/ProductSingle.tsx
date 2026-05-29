@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import { productsData } from "@/lib/products";
+import { useSubmitQuoteRequest } from "@workspace/api-client-react";
 import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -16,8 +17,11 @@ export function ProductSingle() {
   // Form State
   const [name, setName] = useState("");
   const [company, setCompany] = useState("");
-  const [phone, setPhone] = useState("");
+  const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
+  const [isSuccess, setIsSuccess] = useState(false);
+
+  const submitQuote = useSubmitQuoteRequest();
 
   useEffect(() => {
     if (product) {
@@ -43,18 +47,21 @@ export function ProductSingle() {
   const handleQuoteRequest = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const subject = encodeURIComponent(`Quote Request: ${product.name}`);
-    const body = encodeURIComponent(`Product: ${product.name}
-Name: ${name}
-Company: ${company || "N/A"}
-Phone: ${phone || "N/A"}
-
-Message:
-${message}
-`);
-
-    const mailtoLink = `mailto:yolatoye@equipchainglobal.com?subject=${subject}&body=${body}`;
-    window.location.href = mailtoLink;
+    submitQuote.mutate({
+      data: {
+        fullName: name,
+        companyName: company,
+        email: email,
+        serviceType: "Procurement & Supply", // Required by backend schema
+        productService: product.name,
+        specification: message,
+        sourcingType: "No Preference",
+      }
+    }, {
+      onSuccess: () => {
+        setIsSuccess(true);
+      }
+    });
   };
 
   return (
@@ -149,56 +156,72 @@ ${message}
                         {product.name}
                       </DialogDescription>
                     </div>
-                    <form onSubmit={handleQuoteRequest} className="p-5 sm:p-6 space-y-4 sm:space-y-5">
-                      <div className="space-y-1.5">
-                        <label className="text-xs sm:text-sm font-semibold text-foreground">Full Name *</label>
-                        <Input 
-                          required 
-                          value={name}
-                          onChange={(e) => setName(e.target.value)}
-                          placeholder="Your Name" 
-                          className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
-                        />
+                    {isSuccess ? (
+                      <div className="p-8 text-center">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                          <CheckCircle2 className="w-8 h-8 text-green-600" />
+                        </div>
+                        <h3 className="text-xl font-semibold text-foreground mb-2">Request Sent!</h3>
+                        <p className="text-muted-foreground text-sm mb-6">Thank you. Our team will review your requirements and get back to you shortly.</p>
+                        <button 
+                          onClick={() => setIsSuccess(false)}
+                          className="w-full inline-flex items-center justify-center rounded-xl text-sm font-semibold transition-colors bg-secondary text-foreground hover:bg-secondary/80 h-11"
+                        >
+                          Send Another
+                        </button>
                       </div>
-                      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                    ) : (
+                      <form onSubmit={handleQuoteRequest} className="p-5 sm:p-6 space-y-4 sm:space-y-5">
                         <div className="space-y-1.5">
-                          <label className="text-xs sm:text-sm font-semibold text-foreground">Company</label>
+                          <label className="text-xs sm:text-sm font-semibold text-foreground">Full Name *</label>
                           <Input 
-                            value={company}
-                            onChange={(e) => setCompany(e.target.value)}
-                            placeholder="Your Company" 
+                            required 
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                            placeholder="Your Name" 
                             className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
                           />
                         </div>
+                        <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                          <div className="space-y-1.5">
+                            <label className="text-xs sm:text-sm font-semibold text-foreground">Company</label>
+                            <Input 
+                              value={company}
+                              onChange={(e) => setCompany(e.target.value)}
+                              placeholder="Your Company" 
+                              className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-xs sm:text-sm font-semibold text-foreground">Email *</label>
+                            <Input 
+                              required
+                              type="email"
+                              value={email}
+                              onChange={(e) => setEmail(e.target.value)}
+                              placeholder="Email Address" 
+                              className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                            />
+                          </div>
+                        </div>
                         <div className="space-y-1.5">
-                          <label className="text-xs sm:text-sm font-semibold text-foreground">Phone</label>
-                          <Input 
-                            value={phone}
-                            onChange={(e) => setPhone(e.target.value)}
-                            placeholder="Phone Number" 
-                            className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                          <label className="text-xs sm:text-sm font-semibold text-foreground">Additional Details (Optional)</label>
+                          <Textarea 
+                            value={message}
+                            onChange={(e) => setMessage(e.target.value)}
+                            placeholder="Quantity, timeline, specs..." 
+                            className="min-h-[80px] sm:min-h-[100px] border-border focus:border-[#f97316] focus:ring-[#f97316] resize-none text-sm"
                           />
                         </div>
-                      </div>
-                      <div className="space-y-1.5">
-                        <label className="text-xs sm:text-sm font-semibold text-foreground">Additional Details (Optional)</label>
-                        <Textarea 
-                          value={message}
-                          onChange={(e) => setMessage(e.target.value)}
-                          placeholder="Quantity, timeline, specs..." 
-                          className="min-h-[80px] sm:min-h-[100px] border-border focus:border-[#f97316] focus:ring-[#f97316] resize-none text-sm"
-                        />
-                      </div>
-                      <button 
-                        type="submit"
-                        className="w-full mt-2 inline-flex items-center justify-center rounded-xl text-sm sm:text-base font-semibold transition-colors bg-[#0b0d82] text-white hover:bg-[#0b0d82]/90 h-12"
-                      >
-                        Send Request via Email
-                      </button>
-                      <p className="text-[11px] sm:text-xs text-center text-muted-foreground mt-2">
-                        Opens your default email client.
-                      </p>
-                    </form>
+                        <button 
+                          type="submit"
+                          disabled={submitQuote.isPending}
+                          className="w-full mt-2 inline-flex items-center justify-center rounded-xl text-sm sm:text-base font-semibold transition-colors bg-[#0b0d82] text-white hover:bg-[#0b0d82]/90 h-12 disabled:opacity-50"
+                        >
+                          {submitQuote.isPending ? "Sending..." : "Submit Quote Request"}
+                        </button>
+                      </form>
+                    )}
                   </DialogContent>
                 </Dialog>
               </div>
