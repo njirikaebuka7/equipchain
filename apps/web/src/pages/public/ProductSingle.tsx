@@ -142,61 +142,61 @@ ${message}
                       Request Quote
                     </button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[500px] p-0 overflow-hidden bg-card border-border rounded-3xl shadow-2xl">
-                    <div className="bg-[#0b0d82] p-8 text-center text-white">
-                      <DialogTitle className="text-2xl font-bold text-white mb-2">Request a Quote</DialogTitle>
-                      <DialogDescription className="text-white/80">
+                  <DialogContent className="w-[95vw] max-w-[400px] sm:max-w-[420px] max-h-[90vh] overflow-y-auto p-0 bg-card border-border rounded-2xl sm:rounded-3xl shadow-2xl">
+                    <div className="bg-[#0b0d82] p-6 sm:p-8 text-center text-white shrink-0">
+                      <DialogTitle className="text-xl sm:text-2xl font-bold text-white mb-1">Request a Quote</DialogTitle>
+                      <DialogDescription className="text-white/80 text-sm">
                         {product.name}
                       </DialogDescription>
                     </div>
-                    <form onSubmit={handleQuoteRequest} className="p-8 space-y-6">
-                      <div className="space-y-2">
-                        <label className="text-sm font-semibold text-foreground">Full Name *</label>
+                    <form onSubmit={handleQuoteRequest} className="p-5 sm:p-6 space-y-4 sm:space-y-5">
+                      <div className="space-y-1.5">
+                        <label className="text-xs sm:text-sm font-semibold text-foreground">Full Name *</label>
                         <Input 
                           required 
                           value={name}
                           onChange={(e) => setName(e.target.value)}
                           placeholder="Your Name" 
-                          className="h-12 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                          className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
                         />
                       </div>
-                      <div className="grid grid-cols-2 gap-4">
-                        <div className="space-y-2">
-                          <label className="text-sm font-semibold text-foreground">Company</label>
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4">
+                        <div className="space-y-1.5">
+                          <label className="text-xs sm:text-sm font-semibold text-foreground">Company</label>
                           <Input 
                             value={company}
                             onChange={(e) => setCompany(e.target.value)}
                             placeholder="Your Company" 
-                            className="h-12 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                            className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
                           />
                         </div>
-                        <div className="space-y-2">
-                          <label className="text-sm font-semibold text-foreground">Phone</label>
+                        <div className="space-y-1.5">
+                          <label className="text-xs sm:text-sm font-semibold text-foreground">Phone</label>
                           <Input 
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)}
-                            placeholder="Your Phone Number" 
-                            className="h-12 border-border focus:border-[#f97316] focus:ring-[#f97316]"
+                            placeholder="Phone Number" 
+                            className="h-10 sm:h-11 border-border focus:border-[#f97316] focus:ring-[#f97316]"
                           />
                         </div>
                       </div>
-                      <div className="space-y-2">
-                        <label className="text-sm font-semibold text-foreground">Additional Details (Optional)</label>
+                      <div className="space-y-1.5">
+                        <label className="text-xs sm:text-sm font-semibold text-foreground">Additional Details (Optional)</label>
                         <Textarea 
                           value={message}
                           onChange={(e) => setMessage(e.target.value)}
-                          placeholder="Specify quantity, delivery timeline, or technical requirements..." 
-                          className="min-h-[100px] border-border focus:border-[#f97316] focus:ring-[#f97316] resize-none"
+                          placeholder="Quantity, timeline, specs..." 
+                          className="min-h-[80px] sm:min-h-[100px] border-border focus:border-[#f97316] focus:ring-[#f97316] resize-none text-sm"
                         />
                       </div>
                       <button 
                         type="submit"
-                        className="w-full inline-flex items-center justify-center rounded-xl text-base font-semibold transition-colors bg-[#0b0d82] text-white hover:bg-[#0b0d82]/90 h-14"
+                        className="w-full mt-2 inline-flex items-center justify-center rounded-xl text-sm sm:text-base font-semibold transition-colors bg-[#0b0d82] text-white hover:bg-[#0b0d82]/90 h-12"
                       >
                         Send Request via Email
                       </button>
-                      <p className="text-xs text-center text-muted-foreground mt-4">
-                        This will open your default email client with a pre-filled message.
+                      <p className="text-[11px] sm:text-xs text-center text-muted-foreground mt-2">
+                        Opens your default email client.
                       </p>
                     </form>
                   </DialogContent>
